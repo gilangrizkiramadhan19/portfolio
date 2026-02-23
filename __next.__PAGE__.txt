@@ -1,13 +1,13 @@
 1:"$Sreact.fragment"
-2:I[13474,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"Navigation"]
-3:I[85161,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"Hero"]
-4:I[20608,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"About"]
-5:I[14255,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"Skills"]
-6:I[80976,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"Projects"]
-7:I[66082,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"Experience"]
-8:I[15751,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"Contact"]
-9:I[76841,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/8e3615d601f6e61b.js"],"Footer"]
+2:I[13474,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"Navigation"]
+3:I[85161,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"Hero"]
+4:I[20608,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"About"]
+5:I[14255,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"Skills"]
+6:I[80976,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"Projects"]
+7:I[66082,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"Experience"]
+8:I[15751,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"Contact"]
+9:I[76841,["/portfolio/_next/static/chunks/a624b468970d3cc4.js","/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/60bafe68f3d54855.js"],"Footer"]
 a:I[97367,["/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-0:{"buildId":"8j94KAWFRZMtSHIkv_tXU","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"w-full bg-background text-foreground","children":[["$","$L2",null,{}],["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}]]}],[["$","script","script-0",{"src":"/portfolio/_next/static/chunks/ff1a16fafef87110.js","async":true}],["$","script","script-1",{"src":"/portfolio/_next/static/chunks/8e3615d601f6e61b.js","async":true}]],["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"O0fCeghfpdLtY0MDD361W","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"w-full bg-background text-foreground","children":[["$","$L2",null,{}],["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}]]}],[["$","script","script-0",{"src":"/portfolio/_next/static/chunks/ff1a16fafef87110.js","async":true}],["$","script","script-1",{"src":"/portfolio/_next/static/chunks/60bafe68f3d54855.js","async":true}]],["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]]}],"loading":null,"isPartial":false}
 c:null
