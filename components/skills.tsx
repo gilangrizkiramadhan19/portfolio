@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 interface SkillCategory {
   category: string;
@@ -12,39 +12,39 @@ interface SkillCategory {
 
 const skillsData: SkillCategory[] = [
   {
-    category: 'Mobile Development',
+    category: "Mobile Development",
     skills: [
-      { name: 'Flutter', level: 95 },
-      { name: 'Dart', level: 90 },
-      { name: 'Android Development', level: 85 },
-      { name: 'Mobile UI/UX', level: 85 },
+      { name: "Flutter", level: 85 },
+      { name: "Dart", level: 85 },
+      { name: "Android Development", level: 60 },
+      { name: "Mobile UI/UX", level: 75 },
     ],
   },
   {
-    category: 'Backend & API',
+    category: "Backend & API",
     skills: [
-      { name: 'Python', level: 90 },
-      { name: 'FastAPI', level: 90 },
-      { name: 'REST API', level: 90 },
-      { name: 'Flask & Django', level: 85 },
+      { name: "Python", level: 85 },
+      { name: "FastAPI", level: 85 },
+      { name: "REST API", level: 85 },
+      { name: "Flask & Django", level: 85 },
     ],
   },
   {
-    category: 'AI & Data Science',
+    category: "AI & Data Science",
     skills: [
-      { name: 'Machine Learning', level: 88 },
-      { name: 'Scikit-learn', level: 85 },
-      { name: 'Pandas & Data Analysis', level: 85 },
-      { name: 'TensorFlow', level: 80 },
+      { name: "Machine Learning", level: 80 },
+      { name: "Scikit-learn", level: 85 },
+      { name: "Pandas & Data Analysis", level: 85 },
+      { name: "TensorFlow", level: 80 },
     ],
   },
   {
-    category: 'Database & DevOps',
+    category: "Database & DevOps",
     skills: [
-      { name: 'PostgreSQL & MySQL', level: 88 },
-      { name: 'InfluxDB (Time-series)', level: 85 },
-      { name: 'Firebase', level: 85 },
-      { name: 'Git & GitHub', level: 90 },
+      { name: "PostgreSQL & MySQL", level: 88 },
+      { name: "InfluxDB (Time-series)", level: 85 },
+      { name: "Firebase", level: 85 },
+      { name: "Git & GitHub", level: 85 },
     ],
   },
 ];
@@ -95,23 +95,29 @@ export function Skills() {
               variants={itemVariants}
               className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors"
             >
-              <h3 className="text-2xl font-bold mb-8 text-primary">{category.category}</h3>
+              <h3 className="text-2xl font-bold mb-8 text-primary">
+                {category.category}
+              </h3>
               <div className="space-y-6">
                 {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skillIndex}
-                    variants={itemVariants}
-                  >
+                  <motion.div key={skillIndex} variants={itemVariants}>
                     <div className="flex justify-between mb-2">
-                      <span className="font-semibold text-foreground">{skill.name}</span>
-                      <span className="text-primary font-bold">{skill.level}%</span>
+                      <span className="font-semibold text-foreground">
+                        {skill.name}
+                      </span>
+                      <span className="text-primary font-bold">
+                        {skill.level}%
+                      </span>
                     </div>
                     <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 + skillIndex * 0.1 }}
+                        transition={{
+                          duration: 0.8,
+                          delay: 0.2 + skillIndex * 0.1,
+                        }}
                         className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                       />
                     </div>
@@ -130,12 +136,27 @@ export function Skills() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-8"
         >
-          <h3 className="text-2xl font-bold mb-6 text-primary">Additional Tools & Platforms</h3>
+          <h3 className="text-2xl font-bold mb-6 text-primary">
+            Additional Tools & Platforms
+          </h3>
           <div className="flex flex-wrap gap-3">
-            {['Postman', 'GitHub', 'VS Code', 'Android Studio', 'PyCharm', 'Google Colab', 'Laragon', 'XAMPP', 'Git', 'Mikrotik', 'Ubuntu Server', 'AWS Academy'].map((tool, index) => (
+            {[
+              "Postman",
+              "GitHub",
+              "VS Code",
+              "Android Studio",
+              "PyCharm",
+              "Google Colab",
+              "Laragon",
+              "XAMPP",
+              "Git",
+              "Mikrotik",
+              "Ubuntu Server",
+              "AWS Academy",
+            ].map((tool, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.1, backgroundColor: '#58a6ff' }}
+                whileHover={{ scale: 1.1, backgroundColor: "#58a6ff" }}
                 className="px-4 py-2 bg-background border border-primary/30 rounded-lg text-foreground hover:text-primary-foreground transition-all cursor-default"
               >
                 {tool}

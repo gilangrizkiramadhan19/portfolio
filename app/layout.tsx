@@ -1,32 +1,33 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Mobile Developer Portfolio | AI & IoT Specialist',
-  description: 'Professional portfolio showcasing Flutter mobile development, AI integration, and IoT solutions. Explore innovative projects and technologies.',
+  title: "Machine Learning Engineer | Web & Mobile AI Developer",
+  description:
+    "Professional portfolio showcasing Flutter mobile development, and AI integration. Explore innovative projects and technologies.",
   icons: {
     icon: [
       {
-        url: '/favicon.ico',
+        url: "/favicon.ico",
       },
     ],
   },
   viewport: {
-    width: 'device-width',
+    width: "device-width",
     initialScale: 1,
     maximumScale: 5,
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
@@ -35,5 +36,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
-
-const repoName = "portfolio"; // <-- ganti sesuai nama repo kamu
+const repoName = "portfolio"; // nama repo kamu
 
 const nextConfig = {
   output: "export",
@@ -11,8 +10,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isProd ? `/${repoName}` : "", // penting!
-  assetPrefix: isProd ? `/${repoName}/` : "", // penting banget buat _next/static dll
+  basePath: isProd ? `/${repoName}` : "",
+  assetPrefix: isProd ? `/${repoName}/` : "", // trailing slash penting di assetPrefix
+  trailingSlash: true, // tambahin ini biar path lebih aman di static export
 };
 
 export default nextConfig;
