@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import { Github, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
   id: number;
@@ -19,36 +19,71 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Smart Planting System',
-    description: 'Mobile & IoT-Based Smart Farming Application - Juara 2 AITECH 2024',
-    problem: 'Traditional farming methods lack real-time monitoring dan sistem prediksi, leading to inefficient resource usage dan crop losses. Petani membutuhkan solusi terintegrasi untuk monitoring kondisi lahan real-time dan prediksi hasil panen.',
-    solution: 'Mengembangkan aplikasi mobile berbasis Flutter untuk monitoring IoT real-time, mengintegrasikan sensor lingkungan (suhu, kelembaban, curah hujan), menerapkan ML untuk prediksi tanaman berbasis NPK, dan dashboard visualisasi time-series. Mengintegrasikan data harga komoditas BPS untuk analisis pasar.',
-    technologies: ['Flutter', 'Python', 'FastAPI', 'REST API', 'Machine Learning', 'IoT Sensors', 'Firebase'],
-    image: '/project-1.jpg',
-    github: 'https://github.com/gilangrizkiramadhan19',
-    demo: '#projects',
+    title:
+      "Aplikasi Smart Farming – Sistem Tanam Cerdas Berbasis Data Lingkungan dan Tanah untuk Masa Depan Pangan Berkelanjutan",
+    description:
+      "Mobile & IoT-Based Smart Farming Application – 2nd Winner AITeC VI 2024 (Smart and Precision Farming)",
+
+    problem:
+      "Metode pertanian konvensional masih minim monitoring kondisi lahan secara real-time dan belum memanfaatkan sistem prediktif berbasis data. Hal ini menyebabkan penggunaan sumber daya yang kurang efisien serta risiko penurunan hasil panen. Dibutuhkan sistem terintegrasi untuk monitoring lingkungan dan pengambilan keputusan berbasis data.",
+
+    solution:
+      "Mengembangkan aplikasi mobile berbasis Flutter yang terintegrasi dengan sistem IoT untuk monitoring suhu, kelembaban, dan curah hujan secara real-time. Menerapkan model machine learning berbasis parameter NPK dan data lingkungan untuk prediksi kesesuaian tanaman. Sistem dilengkapi REST API (FastAPI), dashboard visualisasi time-series, serta integrasi data harga komoditas BPS untuk analisis pasar.",
+
+    technologies: [
+      "Flutter",
+      "Python",
+      "FastAPI",
+      "RESTful API",
+      "Machine Learning",
+      "IoT Integration",
+      "Firebase",
+    ],
+
+    image: "/project-1.jpg",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
   },
   {
     id: 2,
-    title: 'SMARTILA - Water Quality Monitoring',
-    description: 'AI-Based Real-Time Water Quality Monitoring System',
-    problem: 'Deteksi kontaminasi air memerlukan tes laboratorium mahal dan waktu lama, tidak accessible untuk komunitas rural. Sistem monitoring real-time tidak tersedia untuk treatment facilities kecil.',
-    solution: 'Membangun backend FastAPI dengan MQTT protocol untuk real-time sensor data processing, InfluxDB untuk time-series storage, Random Forest classifier dengan SMOTE untuk imbalanced data, end-to-end pipeline dari ingestion hingga deployment dengan notifikasi real-time di mobile app.',
-    technologies: ['Flutter', 'Python', 'FastAPI', 'MQTT', 'InfluxDB', 'Scikit-Learn', 'MySQL'],
-    image: '/project-2.jpg',
-    github: 'https://github.com/gilangrizkiramadhan19',
-    demo: '#projects',
+    title: "SMARTILA - Water Quality Monitoring",
+    description: "AI-Based Real-Time Water Quality Monitoring System",
+    problem:
+      "Deteksi kontaminasi air memerlukan tes laboratorium mahal dan waktu lama, tidak accessible untuk komunitas rural. Sistem monitoring real-time tidak tersedia untuk treatment facilities kecil.",
+    solution:
+      "Membangun backend FastAPI dengan MQTT protocol untuk real-time sensor data processing, InfluxDB untuk time-series storage, Random Forest classifier dengan SMOTE untuk imbalanced data, end-to-end pipeline dari ingestion hingga deployment dengan notifikasi real-time di mobile app.",
+    technologies: [
+      "Flutter",
+      "Python",
+      "FastAPI",
+      "MQTT",
+      "InfluxDB",
+      "Scikit-Learn",
+      "MySQL",
+    ],
+    image: "/project-2.jpg",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
   },
   {
     id: 3,
-    title: 'Precision Agriculture & Land Suitability',
-    description: 'Machine Learning Powered Precision Agriculture System',
-    problem: 'Petani kesulitan mengidentifikasi kesesuaian lahan untuk tanaman tertentu, memerlukan analisis parameter tanah dan lingkungan yang kompleks serta rekomendasi tanaman yang tepat.',
-    solution: 'Aplikasi Android Flutter untuk real-time land suitability analysis, implementasi ML models untuk klasifikasi kesesuaian lahan, preprocessing data dengan normalisasi & feature engineering, sistem rekomendasi Top-3 tanaman, dan integrasi GPS untuk ekstraksi koordinat & konversi MDPL.',
-    technologies: ['Flutter', 'Dart', 'Python', 'Machine Learning', 'GPS Integration', 'Data Analysis'],
-    image: '/project-3.jpg',
-    github: 'https://github.com/gilangrizkiramadhan19',
-    demo: '#projects',
+    title: "Precision Agriculture & Land Suitability",
+    description: "Machine Learning Powered Precision Agriculture System",
+    problem:
+      "Petani kesulitan mengidentifikasi kesesuaian lahan untuk tanaman tertentu, memerlukan analisis parameter tanah dan lingkungan yang kompleks serta rekomendasi tanaman yang tepat.",
+    solution:
+      "Aplikasi Android Flutter untuk real-time land suitability analysis, implementasi ML models untuk klasifikasi kesesuaian lahan, preprocessing data dengan normalisasi & feature engineering, sistem rekomendasi Top-3 tanaman, dan integrasi GPS untuk ekstraksi koordinat & konversi MDPL.",
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Python",
+      "Machine Learning",
+      "GPS Integration",
+      "Data Analysis",
+    ],
+    image: "/project-3.jpg",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
   },
 ];
 
@@ -97,14 +132,12 @@ export function Projects() {
               key={project.id}
               variants={itemVariants}
               className={`bg-background border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors ${
-                index % 2 === 1 ? 'md:flex-row-reverse' : ''
+                index % 2 === 1 ? "md:flex-row-reverse" : ""
               }`}
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* Image */}
-                <motion.div
-                  className={index % 2 === 1 ? 'md:order-2' : ''}
-                >
+                <motion.div className={index % 2 === 1 ? "md:order-2" : ""}>
                   <div className="relative h-80 md:h-96 overflow-hidden rounded-lg">
                     <Image
                       src={project.image}
@@ -116,29 +149,43 @@ export function Projects() {
                 </motion.div>
 
                 {/* Content */}
-                <div className={`p-8 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                <div className={`p-8 ${index % 2 === 1 ? "md:order-1" : ""}`}>
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                   >
-                    <h3 className="text-3xl font-bold mb-2 text-primary">{project.title}</h3>
-                    <p className="text-foreground/80 font-semibold mb-4">{project.description}</p>
+                    <h3 className="text-3xl font-bold mb-2 text-primary">
+                      {project.title}
+                    </h3>
+                    <p className="text-foreground/80 font-semibold mb-4">
+                      {project.description}
+                    </p>
 
                     <div className="space-y-4 mb-6">
                       <div>
-                        <p className="font-semibold text-foreground mb-2">Problem</p>
-                        <p className="text-foreground/70 leading-relaxed">{project.problem}</p>
+                        <p className="font-semibold text-foreground mb-2">
+                          Problem
+                        </p>
+                        <p className="text-foreground/70 leading-relaxed">
+                          {project.problem}
+                        </p>
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground mb-2">Solution</p>
-                        <p className="text-foreground/70 leading-relaxed">{project.solution}</p>
+                        <p className="font-semibold text-foreground mb-2">
+                          Solution
+                        </p>
+                        <p className="text-foreground/70 leading-relaxed">
+                          {project.solution}
+                        </p>
                       </div>
                     </div>
 
                     <div className="mb-6">
-                      <p className="font-semibold text-foreground mb-3">Technologies Used</p>
+                      <p className="font-semibold text-foreground mb-3">
+                        Technologies Used
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, idx) => (
                           <motion.span

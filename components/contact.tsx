@@ -1,18 +1,20 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, MessageCircle, Send } from 'lucide-react';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import { Mail, Linkedin, Github, MessageCircle, Send } from "lucide-react";
+import { useState } from "react";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -24,7 +26,7 @@ export function Contact() {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
       setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setSubmitted(false), 5000);
     }
   };
@@ -32,31 +34,31 @@ export function Contact() {
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'gilangrizkiramadhan1906@gmail.com',
-      link: 'mailto:gilangrizkiramadhan1906@gmail.com',
-      color: 'text-blue-400',
+      label: "Email",
+      value: "gilangrizkiramadhan1906@gmail.com",
+      link: "mailto:gilangrizkiramadhan1906@gmail.com",
+      color: "text-blue-400",
     },
     {
       icon: Linkedin,
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/gilangrizkiramadhan',
-      link: 'https://linkedin.com/in/gilangrizkiramadhan',
-      color: 'text-blue-500',
+      label: "LinkedIn",
+      value: "linkedin.com/in/gilangrizkiramadhan",
+      link: "https://www.linkedin.com/in/gilang-rizki-ramadhan-9737662ab/",
+      color: "text-blue-500",
     },
     {
       icon: Github,
-      label: 'GitHub',
-      value: 'github.com/gilangrizkiramadhan19',
-      link: 'https://github.com/gilangrizkiramadhan19',
-      color: 'text-gray-400',
+      label: "GitHub",
+      value: "github.com/gilangrizkiramadhan19",
+      link: "https://github.com/gilangrizkiramadhan19",
+      color: "text-gray-400",
     },
     {
       icon: MessageCircle,
-      label: 'WhatsApp',
-      value: '+62 821 8241 2099',
-      link: 'https://wa.me/6282182412099',
-      color: 'text-green-400',
+      label: "WhatsApp",
+      value: "+62 821 8241 2099",
+      link: "https://wa.me/6282182412099",
+      color: "text-green-400",
     },
   ];
 
@@ -90,7 +92,8 @@ export function Contact() {
             Get In <span className="text-primary">Touch</span>
           </h2>
           <p className="text-foreground/70 max-w-xl mx-auto leading-relaxed">
-            Have a project in mind or want to discuss opportunities? I'd love to hear from you. Drop me a message or connect through social media.
+            Have a project in mind or want to discuss opportunities? I'd love to
+            hear from you. Drop me a message or connect through social media.
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6" />
         </motion.div>
@@ -110,7 +113,9 @@ export function Contact() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                <label className="block text-foreground font-semibold mb-2">Full Name</label>
+                <label className="block text-foreground font-semibold mb-2">
+                  Full Name
+                </label>
                 <input
                   type="text"
                   name="name"
@@ -127,7 +132,9 @@ export function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <label className="block text-foreground font-semibold mb-2">Email Address</label>
+                <label className="block text-foreground font-semibold mb-2">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -144,7 +151,9 @@ export function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <label className="block text-foreground font-semibold mb-2">Message</label>
+                <label className="block text-foreground font-semibold mb-2">
+                  Message
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -186,7 +195,10 @@ export function Contact() {
             className="space-y-6"
           >
             <p className="text-foreground/70 leading-relaxed mb-8">
-              Connect with me through various channels. I'm responsive and usually reply within 24 hours. Whether it's a technical discussion or a new opportunity, I'm always interested in hearing from fellow developers and potential collaborators.
+              Connect with me through various channels. I'm responsive and
+              usually reply within 24 hours. Whether it's a technical discussion
+              or a new opportunity, I'm always interested in hearing from fellow
+              developers and potential collaborators.
             </p>
 
             {contactInfo.map((contact, index) => {
@@ -201,12 +213,18 @@ export function Contact() {
                   whileHover={{ x: 10 }}
                   className="flex items-center gap-4 p-5 bg-background border border-border rounded-lg hover:border-primary/50 transition-colors group"
                 >
-                  <div className={`p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors`}>
+                  <div
+                    className={`p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors`}
+                  >
                     <Icon className={`${contact.color}`} size={28} />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">{contact.label}</p>
-                    <p className="text-foreground/60 group-hover:text-primary transition-colors">{contact.value}</p>
+                    <p className="font-semibold text-foreground">
+                      {contact.label}
+                    </p>
+                    <p className="text-foreground/60 group-hover:text-primary transition-colors">
+                      {contact.value}
+                    </p>
                   </div>
                 </motion.a>
               );
@@ -219,9 +237,13 @@ export function Contact() {
               transition={{ delay: 0.5 }}
               className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl"
             >
-              <p className="text-foreground font-semibold mb-3">Available for Collaboration</p>
+              <p className="text-foreground font-semibold mb-3">
+                Available for Collaboration
+              </p>
               <p className="text-foreground/70">
-                I'm open to freelance projects, full-time opportunities, and interesting collaborations. Let's work together to build something amazing!
+                I'm open to freelance projects, full-time opportunities, and
+                interesting collaborations. Let's work together to build
+                something amazing!
               </p>
             </motion.div>
           </motion.div>

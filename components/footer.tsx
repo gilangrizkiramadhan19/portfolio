@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,18 +9,18 @@ export function Footer() {
   const socialLinks = [
     {
       icon: Github,
-      label: 'GitHub',
-      href: 'https://github.com',
+      label: "GitHub",
+      href: "https://github.com/gilangrizkiramadhan19",
     },
     {
       icon: Linkedin,
-      label: 'LinkedIn',
-      href: 'https://linkedin.com',
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/gilang-rizki-ramadhan-9737662ab/",
     },
     {
       icon: Mail,
-      label: 'Email',
-      href: 'mailto:hello@developer.com',
+      label: "Email",
+      href: "mailto:gilangrizkiramadhan1906@gmail.com",
     },
   ];
 
@@ -39,7 +39,8 @@ export function Footer() {
               Gilang Rizki
             </h3>
             <p className="text-foreground/70 leading-relaxed">
-              Fullstack Developer passionate about creating innovative solutions through technology, AI, and IoT.
+              Fullstack Developer passionate about creating innovative solutions
+              through technology, AI, and IoT.
             </p>
           </motion.div>
 
@@ -52,16 +53,18 @@ export function Footer() {
           >
             <h4 className="font-bold text-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['About', 'Skills', 'Projects', 'Experience', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-foreground/70 hover:text-primary transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              {["About", "Skills", "Projects", "Experience", "Contact"].map(
+                (link) => (
+                  <li key={link}>
+                    <a
+                      href={`#${link.toLowerCase()}`}
+                      className="text-foreground/70 hover:text-primary transition-colors"
+                    >
+                      {link}
+                    </a>
+                  </li>
+                ),
+              )}
             </ul>
           </motion.div>
 
@@ -109,9 +112,7 @@ export function Footer() {
           viewport={{ once: true }}
           className="flex flex-col md:flex-row justify-between items-center gap-4 text-foreground/60 text-sm"
         >
-          <p>
-            © {currentYear} Gilang Rizki Ramadhan. All rights reserved.
-          </p>
+          <p>© {currentYear} Gilang Rizki Ramadhan. All rights reserved.</p>
           <p className="flex items-center gap-1">
             Made with <Heart size={16} className="text-primary" /> in Indonesia
           </p>
@@ -130,14 +131,24 @@ export function Footer() {
       <motion.button
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '100px 0px' }}
+        viewport={{ once: true, margin: "100px 0px" }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="fixed bottom-8 right-8 p-3 bg-primary text-primary-foreground rounded-full shadow-lg hover:bg-primary/90 transition-colors z-40"
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 15l7-7 7 7"
+          />
         </svg>
       </motion.button>
     </footer>
