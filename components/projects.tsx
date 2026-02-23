@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 
 interface Project {
@@ -14,6 +15,7 @@ interface Project {
   image: string;
   github: string;
   demo: string;
+  features?: string[];
 }
 
 const projects: Project[] = [
@@ -40,6 +42,14 @@ const projects: Project[] = [
       "Firebase",
     ],
 
+    features: [
+      "Monitoring real-time suhu, kelembaban, curah hujan via IoT",
+      "Prediksi kesesuaian tanaman berbasis ML (NPK + lingkungan)",
+      "Integrasi API harga komoditas BPS",
+      "Dashboard visualisasi time-series",
+      "Notifikasi alert kondisi lahan kritis",
+    ],
+
     image: "/project-1.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
@@ -61,6 +71,13 @@ const projects: Project[] = [
       "Scikit-Learn",
       "MySQL",
     ],
+    features: [
+      "Real-time water quality parameter monitoring",
+      "ML-based contamination detection",
+      "Sensor data collection via MQTT",
+      "Time-series visualization dashboard",
+      "Instant notification alerts",
+    ],
     image: "/project-2.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
@@ -80,6 +97,13 @@ const projects: Project[] = [
       "Machine Learning",
       "GPS Integration",
       "Data Analysis",
+    ],
+    features: [
+      "Land suitability analysis with ML models",
+      "Top-3 crop recommendations",
+      "GPS coordinate extraction & altitude conversion",
+      "Soil parameter analysis",
+      "Environmental compatibility assessment",
     ],
     image: "/project-3.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
@@ -103,7 +127,205 @@ const itemVariants = {
   show: { opacity: 1, y: 0 },
 };
 
+function ProjectModal({
+  project,
+  isOpen,
+  onClose,
+}: {
+  project: Project;
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+  const features = project.features || [];
+
+  const nextFeature = () => {
+    setCurrentFeatureIndex((prev) =>
+      prev === features.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevFeature = () => {
+    setCurrentFeatureIndex((prev) =>
+      prev === 0 ? features.length - 1 : prev - 1
+    );
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 bg-black/50 z-40"
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      >
+        <div className="bg-background border border-border rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="relative">
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 z-10 p-2 bg-background/80 hover:bg-primary rounded-full transition-colors"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Header Image */}
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <h2 className="text-3xl font-bold text-primary mb-2">
+                {project.title}
+              </h2>
+              <p className="text-foreground/80 font-semibold mb-6">
+                {project.description}
+              </p>
+
+              {/* Problem & Solution */}
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <h3 className="text-lg font-semibold text-primary mb-3">
+                    Problem
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed text-sm">
+                    {project.problem}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-primary mb-3">
+                    Solution
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed text-sm">
+                    {project.solution}
+                  </p>
+                </div>
+              </div>
+
+              {/* Features Carousel */}
+              {features.length > 0 && (
+                <div className="mb-8 border-t border-border pt-8">
+                  <h3 className="text-lg font-semibold text-primary mb-4">
+                    Fitur Utama Aplikasi
+                  </h3>
+                  <div className="bg-primary/10 rounded-lg p-6 mb-4 min-h-32 flex items-center">
+                    <motion.div
+                      key={currentFeatureIndex}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      className="w-full"
+                    >
+                      <p className="text-lg text-foreground leading-relaxed flex items-start gap-3">
+                        <span className="text-primary font-bold text-2xl flex-shrink-0">
+                          •
+                        </span>
+                        <span>{features[currentFeatureIndex]}</span>
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* Navigation */}
+                  <div className="flex items-center justify-between gap-4">
+                    <button
+                      onClick={prevFeature}
+                      className="p-2 hover:bg-primary/20 rounded-full transition-colors"
+                    >
+                      <ChevronLeft size={24} className="text-primary" />
+                    </button>
+                    <div className="flex gap-2">
+                      {features.map((_, idx) => (
+                        <motion.button
+                          key={idx}
+                          onClick={() => setCurrentFeatureIndex(idx)}
+                          animate={{
+                            width: idx === currentFeatureIndex ? 32 : 8,
+                          }}
+                          className={`h-2 rounded-full transition-colors ${
+                            idx === currentFeatureIndex
+                              ? "bg-primary"
+                              : "bg-primary/30"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <button
+                      onClick={nextFeature}
+                      className="p-2 hover:bg-primary/20 rounded-full transition-colors"
+                    >
+                      <ChevronRight size={24} className="text-primary" />
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Technologies */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-foreground mb-3">
+                  Technologies Used
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, idx) => (
+                    <motion.span
+                      key={idx}
+                      whileHover={{ scale: 1.05 }}
+                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-4">
+                <motion.a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  <Github size={20} />
+                  GitHub
+                </motion.a>
+                <motion.a
+                  href={project.demo}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2 px-4 py-2 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
+                >
+                  <ExternalLink size={20} />
+                  Demo
+                </motion.a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </>
+  );
+}
+
 export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/50">
       <div className="max-w-7xl mx-auto">
@@ -131,9 +353,8 @@ export function Projects() {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className={`bg-background border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
+              className={`bg-background border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors cursor-pointer`}
+              onClick={() => setSelectedProject(project)}
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* Image */}
@@ -207,19 +428,23 @@ export function Projects() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <Github size={20} />
                         GitHub
                       </motion.a>
-                      <motion.a
-                        href={project.demo}
+                      <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedProject(project);
+                        }}
                         className="flex items-center gap-2 px-4 py-2 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
                       >
                         <ExternalLink size={20} />
-                        Demo
-                      </motion.a>
+                        Details
+                      </motion.button>
                     </div>
                   </motion.div>
                 </div>
@@ -228,6 +453,15 @@ export function Projects() {
           ))}
         </motion.div>
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </section>
   );
 }
