@@ -16,6 +16,7 @@ interface Project {
   github: string;
   demo: string;
   features?: string[];
+  featureImages?: string[];
 }
 
 const projects: Project[] = [
@@ -50,6 +51,14 @@ const projects: Project[] = [
       "Notifikasi alert kondisi lahan kritis",
     ],
 
+    featureImages: [
+      "/project-1.jpg",
+      "/project-1.jpg",
+      "/project-1.jpg",
+      "/project-1.jpg",
+      "/project-1.jpg",
+    ],
+
     image: "/project-1.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
@@ -78,6 +87,13 @@ const projects: Project[] = [
       "Time-series visualization dashboard",
       "Instant notification alerts",
     ],
+    featureImages: [
+      "/project-2.jpg",
+      "/project-2.jpg",
+      "/project-2.jpg",
+      "/project-2.jpg",
+      "/project-2.jpg",
+    ],
     image: "/project-2.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
@@ -104,6 +120,13 @@ const projects: Project[] = [
       "GPS coordinate extraction & altitude conversion",
       "Soil parameter analysis",
       "Environmental compatibility assessment",
+    ],
+    featureImages: [
+      "/project-3.jpg",
+      "/project-3.jpg",
+      "/project-3.jpg",
+      "/project-3.jpg",
+      "/project-3.jpg",
     ],
     image: "/project-3.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
@@ -138,6 +161,7 @@ function ProjectModal({
 }) {
   const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
   const features = project.features || [];
+  const featureImages = project.featureImages || [];
 
   const nextFeature = () => {
     setCurrentFeatureIndex((prev) =>
@@ -152,6 +176,8 @@ function ProjectModal({
   };
 
   if (!isOpen) return null;
+
+  const currentImage = featureImages[currentFeatureIndex] || project.image;
 
   return (
     <>
@@ -178,15 +204,21 @@ function ProjectModal({
               <X size={24} />
             </button>
 
-            {/* Header Image */}
-            <div className="relative h-64 overflow-hidden">
+            {/* Header Image - Dynamic based on Feature */}
+            <motion.div 
+              key={currentImage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="relative h-64 overflow-hidden"
+            >
               <Image
-                src={project.image}
+                src={currentImage}
                 alt={project.title}
                 fill
                 className="object-cover"
               />
-            </div>
+            </motion.div>
 
             {/* Content */}
             <div className="p-8">
