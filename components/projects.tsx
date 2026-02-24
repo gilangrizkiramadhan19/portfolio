@@ -104,37 +104,31 @@ const projects: Project[] = [
     ],
     screens: [
       {
+        title: "Authentication & Login",
+        description:
+          "Sistem login aman dengan email dan password untuk akses aplikasi SMARTILA. Interface yang clean dan user-friendly untuk kemudahan user. Support untuk create account baru dan forgot password recovery.",
+        image: "/smartila-login.jpeg",
+      },
+      {
         title: "Water Quality Dashboard",
         description:
-          "Menampilkan parameter kualitas air real-time dari multiple sensors: pH, turbidity, dissolved oxygen, temperature. Visualisasi grafik time-series untuk memonitor trend kualitas air. Color-coded alerts menunjukkan status kesehatan air secara instant.",
-        image: "/project-2.jpg",
+          "Menampilkan parameter kualitas air real-time dari multiple sensors: pH, turbidity, dissolved oxygen, temperature. Visualisasi circular indicators untuk setiap parameter dengan status color-coded (Bahaya, Normal, Optimal). Monitoring comprehensive untuk kondisi air secara real-time.",
+        image: "/smartila-dashboard.jpeg",
       },
       {
-        title: "Contamination Detection",
+        title: "Contamination Detection & Alerts",
         description:
-          "ML-based model mengidentifikasi kontaminasi air menggunakan Random Forest Classifier dengan SMOTE untuk handling imbalanced data. User mendapat notifikasi otomatis jika deteksi kontaminasi dengan severity level. Historical data tersimpan untuk analisis pola kontaminasi jangka panjang.",
-        image: "/project-2.jpg",
+          "ML-based model mengidentifikasi kontaminasi air dan kondisi berbahaya dengan alert level tinggi. User mendapat rekomendasi corrective measures otomatis. Sistem AI memberikan insights tentang tingkat kepercayaan prediksi dan tindakan yang diperlukan.",
+        image: "/smartila-prediksi.jpeg",
       },
       {
-        title: "Sensor Management",
+        title: "Data Visualization & Grafik",
         description:
-          "Interface untuk mengelola multiple IoT sensors dengan MQTT protocol. User dapat menambah/remove sensors dan mengatur frequency data collection. Real-time status monitoring untuk setiap sensor unit yang tersambung.",
-        image: "/project-2.jpg",
-      },
-      {
-        title: "Data Visualization",
-        description:
-          "Dashboard dengan berbagai chart types untuk analisis mendalam: time-series, distribution, correlation analysis. Export data ke berbagai format (CSV, PDF) untuk reporting. Custom date range selection untuk analisis periode spesifik.",
-        image: "/project-2.jpg",
-      },
-      {
-        title: "Alert Configuration",
-        description:
-          "Sistem notifikasi yang dapat dikustomisasi per parameter dengan threshold yang adjustable. Multi-channel alerts: push notification, email, SMS untuk critical events. Historical alert log untuk audit trail dan pattern analysis.",
-        image: "/project-2.jpg",
+          "Dashboard dengan grafik time-series untuk analisis trend 30 data terakhir. Visualisasi multiple parameters secara bersamaan untuk melihat korelasi. Custom date range selection dan export data untuk reporting & analysis lebih lanjut.",
+        image: "/smartila-grafik.jpeg",
       },
     ],
-    image: "/project-2.jpg",
+    image: "/smartila-login.jpeg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
   },
