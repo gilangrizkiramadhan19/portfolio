@@ -1,8 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+  X,
+} from "lucide-react";
 import Image from "next/image";
+
+interface AppScreen {
+  title: string;
+  description: string;
+  image: string;
+}
 
 interface Project {
   id: number;
@@ -14,6 +27,7 @@ interface Project {
   image: string;
   github: string;
   demo: string;
+  screens?: AppScreen[];
 }
 
 const projects: Project[] = [
@@ -40,6 +54,39 @@ const projects: Project[] = [
       "Firebase",
     ],
 
+    screens: [
+      {
+        title: "Authentication & Login",
+        description:
+          "Sistem otentikasi aman dengan login berbasis email/password dan biometric. User dapat mendaftar akun baru dengan verifikasi email untuk keamanan maksimal. Interface yang intuitif memudahkan petani untuk mengakses aplikasi.",
+        image: "/project-1.jpg",
+      },
+      {
+        title: "Real-Time Monitoring Dashboard",
+        description:
+          "Dashboard menampilkan data real-time dari IoT sensors: suhu lahan, kelembaban tanah, dan curah hujan. Visualisasi grafik time-series untuk tracking kondisi lahan sepanjang hari. Alert otomatis muncul jika kondisi lahan mencapai threshold kritis.",
+        image: "/project-1.jpg",
+      },
+      {
+        title: "Crop Suitability Prediction",
+        description:
+          "Fitur prediksi menggunakan ML models untuk merekomendasikan tanaman yang cocok berdasarkan parameter NPK dan kondisi lingkungan. User input parameter tanah (N, P, K) dan sistem memberikan Top-3 rekomendasi tanaman dengan score kesesuaian. Integrasi data historis untuk meningkatkan akurasi prediksi.",
+        image: "/project-1.jpg",
+      },
+      {
+        title: "Market Price Analysis",
+        description:
+          "Integrasi API harga komoditas dari BPS menampilkan trend harga tanaman real-time. Petani dapat membuat keputusan panen berdasarkan analisis pasar yang akurat. Grafik price trends membantu planning penjualan dan strategi pertanian.",
+        image: "/project-1.jpg",
+      },
+      {
+        title: "Alert & Notification System",
+        description:
+          "Sistem notifikasi push untuk kondisi lahan kritis seperti kelembaban terlalu tinggi/rendah atau suhu ekstrem. User dapat mengatur threshold alert sesuai kebutuhan tanaman. Notifikasi real-time memastikan petani dapat segera mengambil tindakan preventif.",
+        image: "/project-1.jpg",
+      },
+    ],
+
     image: "/project-1.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
@@ -61,7 +108,33 @@ const projects: Project[] = [
       "Scikit-Learn",
       "MySQL",
     ],
-    image: "/project-2.jpg",
+    screens: [
+      {
+        title: "Authentication & Login",
+        description:
+          "Sistem login aman dengan email dan password untuk akses aplikasi SMARTILA. Interface yang clean dan user-friendly untuk kemudahan user. Support untuk create account baru dan forgot password recovery.",
+        image: "/smartila-login.jpeg",
+      },
+      {
+        title: "Water Quality Dashboard",
+        description:
+          "Menampilkan parameter kualitas air real-time dari multiple sensors: pH, turbidity, dissolved oxygen, temperature. Visualisasi circular indicators untuk setiap parameter dengan status color-coded (Bahaya, Normal, Optimal). Monitoring comprehensive untuk kondisi air secara real-time.",
+        image: "/smartila-dashboard.jpeg",
+      },
+      {
+        title: "Contamination Detection & Alerts",
+        description:
+          "ML-based model mengidentifikasi kontaminasi air dan kondisi berbahaya dengan alert level tinggi. User mendapat rekomendasi corrective measures otomatis. Sistem AI memberikan insights tentang tingkat kepercayaan prediksi dan tindakan yang diperlukan.",
+        image: "/smartila-prediksi.jpeg",
+      },
+      {
+        title: "Data Visualization & Grafik",
+        description:
+          "Dashboard dengan grafik time-series untuk analisis trend 30 data terakhir. Visualisasi multiple parameters secara bersamaan untuk melihat korelasi. Custom date range selection dan export data untuk reporting & analysis lebih lanjut.",
+        image: "/smartila-grafik.jpeg",
+      },
+    ],
+    image: "/smartila-login.jpeg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
   },
@@ -80,6 +153,38 @@ const projects: Project[] = [
       "Machine Learning",
       "GPS Integration",
       "Data Analysis",
+    ],
+    screens: [
+      {
+        title: "Location & Soil Assessment",
+        description:
+          "Fitur GPS integration untuk ekstraksi otomatis koordinat lokasi lahan. Input parameter tanah manual: nilai NPK (Nitrogen, Phosphorus, Potassium) dan organic matter content. Automatic elevation conversion untuk mendapatkan MDPL (Meters Above Sea Level) yang akurat.",
+        image: "/project-3.jpg",
+      },
+      {
+        title: "Land Suitability Analysis",
+        description:
+          "ML models menganalisis kesesuaian lahan berdasarkan parameter tanah dan kondisi lingkungan yang dikumpulkan. Sistem memberikan suitability score untuk berbagai jenis tanaman: Padi, Jagung, Kedelai, Tebu, dll. Visualization radar chart menampilkan suitability profile secara komprehensif.",
+        image: "/project-3.jpg",
+      },
+      {
+        title: "Crop Recommendation Engine",
+        description:
+          "Top-3 crop recommendations dengan detailed ranking berdasarkan suitability score. Setiap rekomendasi dilengkapi info: optimal planting season, estimated yield, required resources. User dapat save favorites untuk quick reference di masa depan.",
+        image: "/project-3.jpg",
+      },
+      {
+        title: "Soil Parameter Database",
+        description:
+          "Database lengkap historical soil data untuk setiap lahan yang telah dianalisis. User dapat track perubahan parameter tanah seiring waktu dan trending analysis. Comparison tools untuk membandingkan kondisi tanah antara lahan berbeda atau periode berbeda.",
+        image: "/project-3.jpg",
+      },
+      {
+        title: "Resource Planning",
+        description:
+          "Berdasarkan crop recommendation, sistem memproyeksikan kebutuhan resources: water requirement, fertilizer type & amount, pesticide needs. ROI projection untuk membantu petani membuat keputusan ekonomis. Integration dengan market price untuk cost-benefit analysis per tanaman.",
+        image: "/project-3.jpg",
+      },
     ],
     image: "/project-3.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
@@ -103,7 +208,219 @@ const itemVariants = {
   show: { opacity: 1, y: 0 },
 };
 
+function ProjectModal({
+  project,
+  isOpen,
+  onClose,
+}: {
+  project: Project;
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
+  const screens = project.screens || [];
+
+  const nextScreen = () => {
+    setCurrentScreenIndex((prev) =>
+      prev === screens.length - 1 ? 0 : prev + 1,
+    );
+  };
+
+  const prevScreen = () => {
+    setCurrentScreenIndex((prev) =>
+      prev === 0 ? screens.length - 1 : prev - 1,
+    );
+  };
+
+  if (!isOpen) return null;
+
+  const currentScreen = screens[currentScreenIndex];
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 bg-black/50 z-40"
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      >
+        <div className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-screen overflow-y-auto">
+          <div className="relative">
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 z-10 p-2 bg-background/80 hover:bg-primary rounded-full transition-colors"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Header */}
+            <div className="border-b border-border p-8 pb-6">
+              <h2 className="text-3xl font-bold text-primary mb-2">
+                {project.title}
+              </h2>
+              <p className="text-foreground/80 font-semibold mb-6">
+                {project.description}
+              </p>
+
+              {/* Problem & Solution */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-sm font-semibold text-primary mb-2">
+                    PROBLEM
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed text-sm">
+                    {project.problem}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-primary mb-2">
+                    SOLUTION
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed text-sm">
+                    {project.solution}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Screens Carousel */}
+            {screens.length > 0 && currentScreen && (
+              <div className="p-8">
+                <h3 className="text-lg font-semibold text-primary mb-4">
+                  App Features ({currentScreenIndex + 1} of {screens.length})
+                </h3>
+
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  {/* Mockup Image */}
+                  <motion.div
+                    key={currentScreenIndex}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-center justify-center md:order-1"
+                  >
+                    <div className="relative w-48 h-72 md:w-56 md:h-96 overflow-hidden rounded-lg bg-muted flex-shrink-0">
+                      <Image
+                        src={currentScreen.image}
+                        alt={currentScreen.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Screen Description */}
+                  <motion.div
+                    key={`desc-${currentScreenIndex}`}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex flex-col justify-center md:order-2"
+                  >
+                    <h4 className="text-xl md:text-2xl font-bold text-primary mb-4">
+                      {currentScreen.title}
+                    </h4>
+                    <p className="text-foreground/70 leading-relaxed text-sm md:text-base">
+                      {currentScreen.description}
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Navigation */}
+                <div className="flex items-center justify-between gap-4 pt-6 border-t border-border">
+                  <button
+                    onClick={prevScreen}
+                    className="p-2 hover:bg-primary/20 rounded-full transition-colors"
+                  >
+                    <ChevronLeft size={24} className="text-primary" />
+                  </button>
+                  <div className="flex gap-2 flex-wrap justify-center">
+                    {screens.map((_, idx) => (
+                      <motion.button
+                        key={idx}
+                        onClick={() => setCurrentScreenIndex(idx)}
+                        animate={{
+                          width: idx === currentScreenIndex ? 32 : 8,
+                        }}
+                        className={`h-2 rounded-full transition-colors ${
+                          idx === currentScreenIndex
+                            ? "bg-primary"
+                            : "bg-primary/30"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    onClick={nextScreen}
+                    className="p-2 hover:bg-primary/20 rounded-full transition-colors"
+                  >
+                    <ChevronRight size={24} className="text-primary" />
+                  </button>
+                </div>
+
+                {/* Technologies */}
+                <div className="mb-8 pt-6">
+                  <h3 className="text-lg font-semibold text-foreground mb-3">
+                    Technologies Used
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, idx) => (
+                      <motion.span
+                        key={idx}
+                        whileHover={{ scale: 1.05 }}
+                        className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-4">
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                  >
+                    <Github size={20} />
+                    GitHub
+                  </motion.a>
+                  <motion.a
+                    href={project.demo}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
+                  >
+                    <ExternalLink size={20} />
+                    Demo
+                  </motion.a>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </>
+  );
+}
+
 export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/50">
       <div className="max-w-7xl mx-auto">
@@ -131,9 +448,8 @@ export function Projects() {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className={`bg-background border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
+              className={`bg-background border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors cursor-pointer`}
+              onClick={() => setSelectedProject(project)}
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* Image */}
@@ -207,19 +523,23 @@ export function Projects() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <Github size={20} />
                         GitHub
                       </motion.a>
-                      <motion.a
-                        href={project.demo}
+                      <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedProject(project);
+                        }}
                         className="flex items-center gap-2 px-4 py-2 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
                       >
                         <ExternalLink size={20} />
-                        Demo
-                      </motion.a>
+                        Details
+                      </motion.button>
                     </div>
                   </motion.div>
                 </div>
@@ -228,6 +548,15 @@ export function Projects() {
           ))}
         </motion.div>
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </section>
   );
 }
