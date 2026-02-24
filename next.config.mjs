@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
-const repoName = "portfolio"; // nama repo kamu
+const repoName = "portfolio"; // nama repo GitHub kamu
 
 const nextConfig = {
   output: "export",
@@ -11,8 +11,13 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: isProd ? `/${repoName}` : "",
-  assetPrefix: isProd ? `/${repoName}/` : "", // trailing slash penting di assetPrefix
-  trailingSlash: true, // tambahin ini biar path lebih aman di static export
+  assetPrefix: isProd ? `/${repoName}/` : "",
+  trailingSlash: true,
+
+  // Penting: agar process.env.NEXT_PUBLIC_BASE_PATH bisa dipakai di client-side
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? `/${repoName}` : "",
+  },
 };
 
 export default nextConfig;

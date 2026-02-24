@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+// Ambil basePath dari env (sudah didefinisikan di next.config.mjs)
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 interface AppScreen {
   title: string;
   description: string;
@@ -37,13 +40,10 @@ const projects: Project[] = [
       "Aplikasi Smart Farming – Sistem Tanam Cerdas Berbasis Data Lingkungan dan Tanah untuk Masa Depan Pangan Berkelanjutan",
     description:
       "Mobile & IoT-Based Smart Farming Application – 2nd Winner AITeC VI 2024 (Smart and Precision Farming)",
-
     problem:
       "Metode pertanian konvensional masih minim monitoring kondisi lahan secara real-time dan belum memanfaatkan sistem prediktif berbasis data. Hal ini menyebabkan penggunaan sumber daya yang kurang efisien serta risiko penurunan hasil panen. Dibutuhkan sistem terintegrasi untuk monitoring lingkungan dan pengambilan keputusan berbasis data.",
-
     solution:
       "Mengembangkan aplikasi mobile berbasis Flutter yang terintegrasi dengan sistem IoT untuk monitoring suhu, kelembaban, dan curah hujan secara real-time. Menerapkan model machine learning berbasis parameter NPK dan data lingkungan untuk prediksi kesesuaian tanaman. Sistem dilengkapi REST API (FastAPI), dashboard visualisasi time-series, serta integrasi data harga komoditas BPS untuk analisis pasar.",
-
     technologies: [
       "Flutter",
       "Python",
@@ -53,7 +53,6 @@ const projects: Project[] = [
       "IoT Integration",
       "Firebase",
     ],
-
     screens: [
       {
         title: "Authentication & Login",
@@ -86,7 +85,6 @@ const projects: Project[] = [
         image: "/project-1.jpg",
       },
     ],
-
     image: "/project-1.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
@@ -310,7 +308,7 @@ function ProjectModal({
                   >
                     <div className="relative w-48 h-72 md:w-56 md:h-96 overflow-hidden rounded-lg bg-muted flex-shrink-0">
                       <Image
-                        src={currentScreen.image}
+                        src={`${basePath}${currentScreen.image}`} // ← FIX utama di sini
                         alt={currentScreen.title}
                         fill
                         className="object-cover"
@@ -452,11 +450,11 @@ export function Projects() {
               onClick={() => setSelectedProject(project)}
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
-                {/* Image */}
+                {/* Image – tambah basePath */}
                 <motion.div className={index % 2 === 1 ? "md:order-2" : ""}>
                   <div className="relative h-80 md:h-96 overflow-hidden rounded-lg">
                     <Image
-                      src={project.image}
+                      src={`${basePath}${project.image}`} // ← FIX utama di sini
                       alt={project.title}
                       fill
                       className="object-cover object-center hover:scale-110 transition-transform duration-300"
