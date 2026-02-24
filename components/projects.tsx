@@ -245,7 +245,7 @@ function ProjectModal({
         exit={{ opacity: 0, scale: 0.9 }}
         className="fixed inset-0 z-50 flex items-center justify-center p-4"
       >
-        <div className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-screen overflow-y-auto">
           <div className="relative">
             {/* Close Button */}
             <button
@@ -300,9 +300,9 @@ function ProjectModal({
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="flex items-center justify-center"
+                    className="flex items-center justify-center md:order-1"
                   >
-                    <div className="relative w-full h-80 md:h-96 overflow-hidden rounded-lg bg-muted">
+                    <div className="relative w-48 h-72 md:w-56 md:h-96 overflow-hidden rounded-lg bg-muted flex-shrink-0">
                       <Image
                         src={currentScreen.image}
                         alt={currentScreen.title}
@@ -319,12 +319,12 @@ function ProjectModal({
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
                     transition={{ duration: 0.3 }}
-                    className="flex flex-col justify-center"
+                    className="flex flex-col justify-center md:order-2"
                   >
-                    <h4 className="text-2xl font-bold text-primary mb-4">
+                    <h4 className="text-xl md:text-2xl font-bold text-primary mb-4">
                       {currentScreen.title}
                     </h4>
-                    <p className="text-foreground/70 leading-relaxed mb-6 text-sm">
+                    <p className="text-foreground/70 leading-relaxed text-sm md:text-base">
                       {currentScreen.description}
                     </p>
                   </motion.div>
