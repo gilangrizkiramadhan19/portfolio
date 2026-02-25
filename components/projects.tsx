@@ -116,7 +116,7 @@ const projects: Project[] = [
       {
         title: "Water Quality Dashboard",
         description:
-          "Menampilkan parameter kualitas air real-time dari multiple sensors: pH, turbidity, dissolved oxygen, temperature. Visualisasi circular indicators untuk setiap parameter dengan status color-coded (Bahaya, Normal, Optimal). Monitoring comprehensive untuk kondisi air secara real-time.",
+          "Menampilkan parameter kualitas air real-time dari multiple sensors: pH, dan dissolved oxygen. Visualisasi circular indicators untuk setiap parameter dengan status color-coded (Bahaya, Normal, Optimal). Monitoring comprehensive untuk kondisi air secara real-time.",
         image: "/smartila-dashboard.jpeg",
       },
       {
