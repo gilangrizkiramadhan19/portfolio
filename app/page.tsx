@@ -4,6 +4,9 @@ import { About } from '@/components/about';
 import { Skills } from '@/components/skills';
 import { Projects } from '@/components/projects';
 import { Experience } from '@/components/experience';
+import { Achievements } from '@/components/achievements';
+import { Certifications } from '@/components/certifications';
+import { Publications } from '@/components/publications';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
 
@@ -16,6 +19,9 @@ export default function Home() {
       <Skills />
       <Projects />
       <Experience />
+      <Achievements />
+      <Certifications />
+      <Publications />
       <Contact />
       <Footer />
     </main>
