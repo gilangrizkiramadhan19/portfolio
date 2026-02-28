@@ -13,27 +13,27 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    title: "Praktik Kerja Lapangan",
+    title: "Praktik Kerja Industri",
     organization: "PT Cerdaskan Generasi Bangsa (NIOMIC)",
-    duration: "20 Desember 2021 – 22 Juni 2022",
+    duration: "Desember 2021 – Juni 2022",
     description:
-      "Mengembangkan antarmuka web menggunakan HTML, CSS, Bootstrap, dan JavaScript. Membuat desain konten digital serta website responsif. Meraih predikat “Baik Sekali” dengan nilai 85.",
+      "Mengembangkan antarmuka web menggunakan HTML, CSS, Bootstrap, dan JavaScript. Membuat desain konten digital serta website responsif untuk berbagai klien. Meraih predikat 'Baik Sekali' dengan nilai rata-rata 85 dalam aspek ketelitian, kecepatan, dan kerapihan hasil kerja.",
     highlights: [
       "Frontend Development",
-      "UI & Web Design",
-      "Implementasi Website",
+      "Responsive Web Design",
+      "UI Implementation",
     ],
   },
   {
     title: "Freelance Developer",
     organization: "PT PLN (Persero)",
-    duration: "01 Mei – 25 Juni 2023",
+    duration: "Mei – Juni 2023",
     description:
-      "Mengoperasikan server pengolah data secara remote, melakukan generate data teknis (vibrasi, arus, suhu), memantau proses sinkronisasi data, serta melakukan validasi hasil olahan dan pelaporan kendala teknis.",
+      "Mengoperasikan server pengolah data secara remote, melakukan generate data teknis (vibrasi, arus, suhu), memantau proses sinkronisasi data, serta melakukan validasi hasil olahan dan pelaporan kendala teknis kepada tim engineering.",
     highlights: [
-      "Pengolahan Data Teknis",
-      "Operasional Server",
-      "Dokumentasi & Pelaporan Teknis",
+      "Data Processing",
+      "Remote Server Management",
+      "Technical Reporting",
     ],
   },
 ];

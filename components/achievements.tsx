@@ -17,62 +17,16 @@ const achievements: Achievement[] = [
   {
     title: "Juara 2 – Skilled Category (Smart and Precision Farming)",
     subtitle: "6th Agricultural Innovation Technology Competition (AITeC VI)",
-    organization: "AITeC VI 2024",
+    organization: "Politeknik Negeri Lampung",
     year: "2024",
     description:
       "Meraih Juara 2 pada kategori Skilled (Sub-kategori Smart and Precision Farming) melalui pengembangan Aplikasi Smart Farming – Sistem Tanam Cerdas Berbasis Data Lingkungan dan Tanah untuk Masa Depan Pangan Berkelanjutan, solusi pertanian cerdas berbasis AI dan IoT dengan integrasi monitoring real-time serta analisis prediktif berbasis machine learning.",
     highlights: [
-      "Kompetisi tingkat nasional",
+      "Kompetisi Nasional",
       "Integrasi AI & IoT",
-      "Sistem pertanian cerdas berbasis data",
+      "Sistem Pertanian Cerdas",
     ],
     icon: <Trophy className="text-yellow-500" size={28} />,
-  },
-  {
-    title: "Hak Cipta Terdaftar – Program Komputer",
-    subtitle:
-      "Aplikasi Smart Farming Sistem Tanam Cerdas Berbasis Data Lingkungan dan Tanah untuk Masa Depan Pangan Berkelanjutan",
-    organization:
-      "Direktorat Jenderal Kekayaan Intelektual – Kementerian Hukum dan HAM RI",
-    year: "2024",
-    description:
-      "Nomor Pencatatan: 000780626. Ciptaan terdaftar resmi berdasarkan Undang-Undang Nomor 28 Tahun 2014 tentang Hak Cipta dengan masa perlindungan selama 50 tahun sejak tanggal pengumuman.",
-    highlights: [
-      "Program Komputer Terdaftar Resmi",
-      "Perlindungan Hukum 50 Tahun",
-      "Sistem AI & IoT Terintegrasi",
-    ],
-    icon: <Copyright className="text-purple-500" size={28} />,
-  },
-  {
-    title: "Hak Cipta Terdaftar – Buku Teknis",
-    subtitle:
-      "Panduan Teknis HydroWatch IoT Sistem Pemantauan Kualitas Air Perikanan Berbasis IoT",
-    organization:
-      "Direktorat Jenderal Kekayaan Intelektual – Kementerian Hukum dan HAM RI",
-    year: "2024",
-    description:
-      "Nomor Pencatatan: 000819850. Buku panduan teknis terdaftar resmi berdasarkan Undang-Undang Nomor 28 Tahun 2014 tentang Hak Cipta dengan masa perlindungan seumur hidup pencipta dan 70 tahun setelahnya. Termasuk dokumentasi teknis sistem IoT dan panduan implementasi monitoring kualitas air.",
-    highlights: [
-      "Hak Cipta Terdaftar Resmi Negara",
-      "Dokumentasi Teknis Sistem IoT",
-      "Panduan Implementasi Monitoring Kualitas Air",
-    ],
-    icon: <Copyright className="text-purple-500" size={28} />,
-  },
-  {
-    title: "Publikasi Jurnal – Machine Learning & Data Science",
-    subtitle:
-      "Prediksi Harga Mobil Bekas Menggunakan Klasterisasi K-Means dan Perbandingan Empat Algoritma Regresi Supervised Learning",
-    organization: "ROUTERS: Jurnal Sistem dan Teknologi Informasi",
-    year: "2025",
-    description: "DOI: 10.25181/rt.v3i2.4249",
-    highlights: [
-      "Jurnal ilmiah terindeks",
-      "Penelitian berbasis machine learning",
-      "Implementasi clustering dan regresi prediktif",
-    ],
-    icon: <BookOpen className="text-blue-500" size={28} />,
   },
 ];
 
@@ -102,7 +56,7 @@ export function Achievements() {
           viewport={{ once: true }}
           className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3"
         >
-          <Award className="text-yellow-500" size={32} />
+          <Trophy className="text-yellow-500" size={32} />
           Prestasi & Penghargaan
         </motion.h3>
 
@@ -111,7 +65,7 @@ export function Achievements() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-6"
+          className="space-y-6"
         >
           {achievements.map((item, index) => (
             <motion.div
