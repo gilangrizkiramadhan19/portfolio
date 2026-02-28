@@ -10,7 +10,7 @@ export function Navigation() {
   const [isExperienceOpen, setIsExperienceOpen] = useState(false);
   const [isExperienceMobileOpen, setIsExperienceMobileOpen] = useState(false);
 
-  const navItems = ['About', 'Skills', 'Projects', 'Contact'];
+  const navItems = ['About', 'Skills', 'Projects', 'Experience', 'Contact'];
   
   const experienceSubItems = [
     { label: 'Pengalaman Profesional', id: 'experience' },
@@ -34,16 +34,21 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">
-            {navItems.map((item) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                whileHover={{ color: '#58a6ff' }}
-                className="text-foreground/70 hover:text-primary transition-colors duration-200 text-sm font-medium"
-              >
-                {item}
-              </motion.a>
-            ))}
+            {navItems.map((item) => {
+              // Render Experience dropdown instead of regular link
+              if (item === 'Experience') {
+                return null;
+              }
+              return (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-foreground/70 hover:text-primary transition-colors duration-200 text-sm font-medium"
+                >
+                  {item}
+                </a>
+              );
+            })}
             
             {/* Desktop Experience Dropdown */}
             <div className="relative group">
@@ -55,9 +60,7 @@ export function Navigation() {
               </button>
               
               {/* Desktop Dropdown Menu */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                whileHover={{ opacity: 1, y: 0 }}
+              <div
                 className="absolute left-0 mt-0 w-56 bg-popover border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
                 onMouseEnter={() => setIsExperienceOpen(true)}
                 onMouseLeave={() => setIsExperienceOpen(false)}
@@ -71,7 +74,7 @@ export function Navigation() {
                     {item.label}
                   </a>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
 
@@ -92,50 +95,56 @@ export function Navigation() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden mt-4 space-y-3 pb-4"
           >
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block text-foreground/70 hover:text-primary transition-colors py-2"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
-            
-            {/* Mobile Experience Dropdown */}
-            <div>
-              <button
-                onClick={() => setIsExperienceMobileOpen(!isExperienceMobileOpen)}
-                className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors py-2 w-full text-left font-medium text-sm"
-              >
-                Experience
-                <ChevronDown size={16} className={`transition-transform duration-300 ${isExperienceMobileOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {isExperienceMobileOpen && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="ml-4 space-y-2 mt-2 border-l border-border/50 pl-4"
-                >
-                  {experienceSubItems.map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className="block text-foreground/70 hover:text-primary transition-colors py-2 text-sm"
-                      onClick={() => {
-                        setIsOpen(false);
-                        setIsExperienceMobileOpen(false);
-                      }}
+            {navItems.map((item) => {
+              // Render Experience dropdown instead of regular link
+              if (item === 'Experience') {
+                return (
+                  <div key={item}>
+                    <button
+                      onClick={() => setIsExperienceMobileOpen(!isExperienceMobileOpen)}
+                      className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors py-2 w-full text-left font-medium text-sm"
                     >
-                      {item.label}
-                    </a>
-                  ))}
-                </motion.div>
-              )}
-            </div>
+                      Experience
+                      <ChevronDown size={16} className={`transition-transform duration-300 ${isExperienceMobileOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {isExperienceMobileOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="ml-4 space-y-2 mt-2 border-l border-border/50 pl-4"
+                      >
+                        {experienceSubItems.map((subItem) => (
+                          <a
+                            key={subItem.id}
+                            href={`#${subItem.id}`}
+                            className="block text-foreground/70 hover:text-primary transition-colors py-2 text-sm"
+                            onClick={() => {
+                              setIsOpen(false);
+                              setIsExperienceMobileOpen(false);
+                            }}
+                          >
+                            {subItem.label}
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                );
+              }
+              
+              return (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="block text-foreground/70 hover:text-primary transition-colors py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item}
+                </a>
+              );
+            })}
           </motion.div>
         )}
       </div>
