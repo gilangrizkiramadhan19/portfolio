@@ -94,9 +94,9 @@ const projects: Project[] = [
     title: "SMARTILA - Water Quality Monitoring",
     description: "AI-Based Real-Time Water Quality Monitoring System",
     problem:
-      "Deteksi kontaminasi air memerlukan tes laboratorium mahal dan waktu lama, tidak accessible untuk komunitas rural. Sistem monitoring real-time tidak tersedia untuk treatment facilities kecil.",
+      "Pemantauan kualitas air secara konvensional masih bergantung pada pengujian laboratorium yang memerlukan biaya tinggi dan waktu analisis yang lama. Hal ini membatasi akses komunitas skala kecil dan fasilitas pengolahan air sederhana terhadap sistem deteksi dini kontaminasi. Ketiadaan monitoring real-time meningkatkan risiko keterlambatan respons terhadap kondisi air yang kritis.",
     solution:
-      "Membangun backend FastAPI dengan MQTT protocol untuk real-time sensor data processing, InfluxDB untuk time-series storage, Random Forest classifier dengan SMOTE untuk imbalanced data, end-to-end pipeline dari ingestion hingga deployment dengan notifikasi real-time di mobile app.",
+      "Mengembangkan sistem monitoring kualitas air berbasis AI dan IoT dengan arsitektur end-to-end. Backend dibangun menggunakan FastAPI dengan protokol MQTT untuk streaming data sensor secara real-time. Data time-series dikelola menggunakan InfluxDB untuk analisis historis dan tren. Model Random Forest dikembangkan dengan teknik SMOTE untuk menangani imbalanced data dalam klasifikasi status air (Aman, Peringatan, Kritis). Pipeline mencakup data ingestion, preprocessing, training, evaluation, hingga deployment model dengan notifikasi real-time pada aplikasi mobile.",
     technologies: [
       "Flutter",
       "Python",
@@ -139,52 +139,48 @@ const projects: Project[] = [
   {
     id: 3,
     title: "Precision Agriculture & Land Suitability",
-    description: "Machine Learning Powered Precision Agriculture System",
+    description:
+      "Sistem Pertanian Presisi Berbasis Machine Learning dengan Sensor Tanah 7-in-1 Real-time",
     problem:
-      "Petani kesulitan mengidentifikasi kesesuaian lahan untuk tanaman tertentu, memerlukan analisis parameter tanah dan lingkungan yang kompleks serta rekomendasi tanaman yang tepat.",
+      "Keputusan pemilihan komoditas oleh petani sering kali tidak mempertimbangkan kesesuaian karakteristik lahan. Berdasarkan penelitian Neswati et al. (2023), hanya sekitar 21% petani yang mempertimbangkan faktor kesesuaian lahan, sementara 79% lainnya masih dipengaruhi faktor non-teknis seperti kebiasaan, keterbatasan modal, dan tren pasar jangka pendek. Kondisi ini berdampak pada rendahnya produktivitas serta meningkatnya risiko kegagalan panen. Diperlukan sistem berbasis data yang mampu memberikan rekomendasi tanaman secara objektif dan terukur berdasarkan parameter tanah dan lingkungan.",
     solution:
-      "Aplikasi Android Flutter untuk real-time land suitability analysis, implementasi ML models untuk klasifikasi kesesuaian lahan, preprocessing data dengan normalisasi & feature engineering, sistem rekomendasi Top-3 tanaman, dan integrasi GPS untuk ekstraksi koordinat & konversi MDPL.",
+      "Mengembangkan aplikasi Android berbasis Flutter yang mengintegrasikan data sensor tanah 7 parameter secara real-time (Nitrogen, Phosphorus, Kalium, pH tanah, suhu tanah, kelembaban, dan Electrical Conductivity). Sistem dilengkapi integrasi GPS untuk identifikasi lokasi serta model machine learning untuk analisis kesesuaian lahan dan rekomendasi Top-3 tanaman optimal berdasarkan kondisi aktual tanah. Pipeline mencakup akuisisi data sensor, preprocessing, hingga inferensi model secara otomatis.",
     technologies: [
       "Flutter",
       "Dart",
       "Python",
       "Machine Learning",
+      "IoT Sensors",
       "GPS Integration",
       "Data Analysis",
     ],
     screens: [
       {
-        title: "Location & Soil Assessment",
+        title: "Halaman Login",
         description:
-          "Fitur GPS integration untuk ekstraksi otomatis koordinat lokasi lahan. Input parameter tanah manual: nilai NPK (Nitrogen, Phosphorus, Potassium) dan organic matter content. Automatic elevation conversion untuk mendapatkan MDPL (Meters Above Sea Level) yang akurat.",
-        image: "/project-3.jpg",
+          "Antarmuka autentikasi pengguna yang sederhana dan responsif dengan sistem validasi input serta keamanan berbasis kredensial untuk mengakses fitur monitoring dan analisis pertanian presisi.",
+        image: "/login 7in1.jpeg",
       },
       {
-        title: "Land Suitability Analysis",
+        title: "Halaman Registrasi",
         description:
-          "ML models menganalisis kesesuaian lahan berdasarkan parameter tanah dan kondisi lingkungan yang dikumpulkan. Sistem memberikan suitability score untuk berbagai jenis tanaman: Padi, Jagung, Kedelai, Tebu, dll. Visualization radar chart menampilkan suitability profile secara komprehensif.",
-        image: "/project-3.jpg",
+          "Form pendaftaran akun baru dengan validasi data (username, email, password, dan konfirmasi password) untuk memastikan keamanan serta integritas data pengguna sebelum mengakses sistem.",
+        image: "/register7in1.jpeg",
       },
       {
-        title: "Crop Recommendation Engine",
+        title: "Dashboard Sensor Real-time",
         description:
-          "Top-3 crop recommendations dengan detailed ranking berdasarkan suitability score. Setiap rekomendasi dilengkapi info: optimal planting season, estimated yield, required resources. User dapat save favorites untuk quick reference di masa depan.",
-        image: "/project-3.jpg",
+          "Dashboard monitoring yang menampilkan 7 parameter utama tanah secara real-time: Nitrogen, Phosphorus, Kalium, pH Tanah, Suhu Tanah, Kelembaban Tanah, dan Electrical Conductivity (EC). Data divisualisasikan sebagai dasar analisis presisi dan rekomendasi tanaman berbasis Machine Learning.",
+        image: "/Dashboard 7 in 1.jpeg",
       },
       {
-        title: "Soil Parameter Database",
+        title: "Informasi Lokasi & Rekomendasi Tanaman",
         description:
-          "Database lengkap historical soil data untuk setiap lahan yang telah dianalisis. User dapat track perubahan parameter tanah seiring waktu dan trending analysis. Comparison tools untuk membandingkan kondisi tanah antara lahan berbeda atau periode berbeda.",
-        image: "/project-3.jpg",
-      },
-      {
-        title: "Resource Planning",
-        description:
-          "Berdasarkan crop recommendation, sistem memproyeksikan kebutuhan resources: water requirement, fertilizer type & amount, pesticide needs. ROI projection untuk membantu petani membuat keputusan ekonomis. Integration dengan market price untuk cost-benefit analysis per tanaman.",
-        image: "/project-3.jpg",
+          "Sistem memperoleh koordinat lahan secara otomatis melalui sensor GPS perangkat untuk memastikan akurasi lokasi. Data geospasial ini dikombinasikan dengan parameter tanah real-time dan diproses oleh model Machine Learning untuk menghasilkan rekomendasi Top-3 tanaman paling sesuai beserta probabilitas prediksinya.",
+        image: "/croppred.jpeg",
       },
     ],
-    image: "/project-3.jpg",
+    image: "/Dashboard 7 in 1.jpeg", // ← gambar utama di halaman portfolio
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
   },

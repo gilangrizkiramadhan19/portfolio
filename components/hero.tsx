@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { basePath } from "@/lib/utils"; // ← Import ini
 
 export function Hero() {
   return (
@@ -90,7 +91,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Image */}
+          {/* Right Image - SUDAH PAKAI basePath */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -109,7 +110,7 @@ export function Hero() {
               className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden border-3 border-primary/60 shadow-2xl shadow-primary/20"
             >
               <Image
-                src="/avatar.jpg"
+                src={`${basePath}/avatar.jpg`} // ← INI YANG DIPERBAIKI
                 alt="Developer Avatar"
                 fill
                 className="object-cover object-center"
