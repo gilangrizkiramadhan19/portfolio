@@ -58,32 +58,32 @@ const projects: Project[] = [
         title: "Authentication & Login",
         description:
           "Sistem otentikasi aman dengan login berbasis email/password dan biometric. User dapat mendaftar akun baru dengan verifikasi email untuk keamanan maksimal. Interface yang intuitif memudahkan petani untuk mengakses aplikasi.",
-        image: "/project-1.jpg",
+        image: "/loginsicetas.jpeg",
       },
       {
-        title: "Real-Time Monitoring Dashboard",
+        title: "Dashboard Monitoring & Integrasi OpenWeather API",
         description:
-          "Dashboard menampilkan data real-time dari IoT sensors: suhu lahan, kelembaban tanah, dan curah hujan. Visualisasi grafik time-series untuk tracking kondisi lahan sepanjang hari. Alert otomatis muncul jika kondisi lahan mencapai threshold kritis.",
-        image: "/project-1.jpg",
+          "Sistem Tanam Cerdas ini menyajikan pemantauan kondisi lingkungan secara real-time di wilayah Bandar Lampung dengan mengintegrasikan data dari OpenWeather Dashboard. Antarmuka aplikasi menampilkan parameter cuaca krusial seperti suhu udara (21.7°C), kelembapan (68%), kecepatan angin, hingga curah hujan dalam satu kartu informasi yang intuitif. Dashboard ini juga dilengkapi dengan fitur Prakiraan 6 Jam ke Depan untuk membantu mitigasi risiko cuaca mendadak, serta Sistem Pendukung Keputusan (DSS) yang memberikan indikator visual 'Aman untuk Tanam' berdasarkan validasi ambang batas (threshold) data cuaca terkini. Melalui navigasi yang terintegrasi, pengguna dapat mengakses analisis prediktif dan rekomendasi komoditas, memastikan setiap langkah budidaya didukung oleh data meteorologi yang akurat dan terpercaya.",
+        image: "/dashboardsicetas.jpeg",
       },
       {
-        title: "Crop Suitability Prediction",
+        title: "Fitur Prediksi Tanaman Berbasis Data",
         description:
-          "Fitur prediksi menggunakan ML models untuk merekomendasikan tanaman yang cocok berdasarkan parameter NPK dan kondisi lingkungan. User input parameter tanah (N, P, K) dan sistem memberikan Top-3 rekomendasi tanaman dengan score kesesuaian. Integrasi data historis untuk meningkatkan akurasi prediksi.",
-        image: "/project-1.jpg",
+          "Fitur Prediksi Tanaman ini memungkinkan pengguna untuk mendapatkan rekomendasi komoditas yang paling sesuai dengan kondisi lahan secara instan. Alur kerjanya dimulai dengan menginputkan data tanah dan iklim spesifik, yang meliputi kadar Nitrogen (N), Phosphorus (P), Potassium (K), Suhu, Kelembaban, pH Tanah, dan Curah Hujan. Sistem ini memberikan fleksibilitas dengan mengizinkan pengisian data manual atau pengambilan data langsung dari sensor IoT melalui tombol 'Ambil Data Blynk'. Setelah data terisi, pengguna dapat menekan tombol 'Prediksi Tanaman', yang akan memproses informasi tersebut dan langsung menampilkan jenis tanaman yang paling direkomendasikan, seperti contoh hasil prediksi yang menunjukkan tanaman 'papaya' untuk set data yang dimasukkan.",
+        image: "/prediksi.png",
       },
       {
         title: "Market Price Analysis",
         description:
-          "Integrasi API harga komoditas dari BPS menampilkan trend harga tanaman real-time. Petani dapat membuat keputusan panen berdasarkan analisis pasar yang akurat. Grafik price trends membantu planning penjualan dan strategi pertanian.",
-        image: "/project-1.jpg",
+          "Sebagai pelengkap fungsionalitas bagi pengguna, sistem juga menyediakan fitur Harga Komoditas yang menyajikan data nilai pasar riil di wilayah tertentu, seperti Lampung, sehingga petani tidak hanya mendapatkan panduan teknis mengenai tanaman yang cocok, tetapi juga dapat memantau informasi harga jual terkini untuk mendukung pengambilan keputusan ekonomi yang lebih strategis",
+        image: "/komoditas.jpeg",
       },
-      {
-        title: "Alert & Notification System",
-        description:
-          "Sistem notifikasi push untuk kondisi lahan kritis seperti kelembaban terlalu tinggi/rendah atau suhu ekstrem. User dapat mengatur threshold alert sesuai kebutuhan tanaman. Notifikasi real-time memastikan petani dapat segera mengambil tindakan preventif.",
-        image: "/project-1.jpg",
-      },
+      // {
+      //   title: "Alert & Notification System",
+      //   description:
+      //     "Sistem notifikasi push untuk kondisi lahan kritis seperti kelembaban terlalu tinggi/rendah atau suhu ekstrem. User dapat mengatur threshold alert sesuai kebutuhan tanaman. Notifikasi real-time memastikan petani dapat segera mengambil tindakan preventif.",
+      //   image: "/project-1.jpg",
+      // },
     ],
     image: "/project-1.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
