@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,6 +61,9 @@ export function Navigation() {
             >
               Contact
             </Link>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -101,6 +105,14 @@ export function Navigation() {
             >
               Contact
             </Link>
+
+            {/* Theme Toggle Mobile */}
+            <div className="pt-4 border-t border-border mt-2">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/70 text-sm">Theme</span>
+                <ThemeToggle />
+              </div>
+            </div>
           </motion.div>
         )}
       </div>

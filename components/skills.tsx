@@ -146,27 +146,36 @@ export function Skills() {
           <h3 className="text-2xl font-bold mb-6 text-center">
             Additional Tools & Platforms
           </h3>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
             {[
-              "Postman",
-              "GitHub",
-              "VS Code",
-              "Android Studio",
-              "PyCharm",
-              "Google Colab",
-              "Laragon",
-              "XAMPP",
-              "Mikrotik",
-              "Ubuntu Server",
-              "AWS Academy",
-              "InfluxDB",
+              { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
+              { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+              { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+              { name: "Android Studio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" },
+              { name: "PyCharm", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" },
+              { name: "Google Colab", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+              { name: "Laragon", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+              { name: "XAMPP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" },
+              { name: "Mikrotik", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+              { name: "Ubuntu Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg" },
+              { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
+              { name: "InfluxDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/influxdb/influxdb-original.svg" },
             ].map((tool, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 bg-background border border-border rounded-lg text-foreground/70 font-medium hover:border-primary/50 hover:text-primary transition-all"
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="flex flex-col items-center gap-2 p-4 bg-background border border-border rounded-xl hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
               >
-                {tool}
+                <Image
+                  src={tool.icon}
+                  alt={tool.name}
+                  width={40}
+                  height={40}
+                  className="object-contain dark:invert-0"
+                />
+                <span className="text-xs text-foreground/70 text-center font-medium">
+                  {tool.name}
+                </span>
               </motion.div>
             ))}
           </div>

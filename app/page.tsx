@@ -18,8 +18,6 @@ export default function Home() {
       <Hero />
       {/* About Me Section */}
       <About />
-      {/* Skills Section */}
-      <Skills />
       {/* Pengalaman Profesional */}
       <Experience />
       {/* Prestasi & Penghargaan */}
@@ -28,6 +26,8 @@ export default function Home() {
       <Certifications />
       {/* Publikasi Jurnal */}
       <Publications />
+      {/* Technical Arsenal */}
+      <Skills />
       {/* Featured Projects */}
       <Projects />
       {/* Contact Section */}

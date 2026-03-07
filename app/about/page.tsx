@@ -21,8 +21,6 @@ export default function AboutPage() {
       <div className="pt-20">
         <About />
       </div>
-      {/* Technical Skills */}
-      <Skills />
       {/* Pengalaman Profesional */}
       <Experience />
       {/* Prestasi & Penghargaan */}
@@ -31,6 +29,8 @@ export default function AboutPage() {
       <Certifications />
       {/* Publikasi Jurnal */}
       <Publications />
+      {/* Technical Skills */}
+      <Skills />
       <Footer />
     </main>
   );
