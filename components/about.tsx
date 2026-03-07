@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Download } from "lucide-react";
-import { AdditionalToolsMarquee } from "./additional-tools-marquee";
 
 const educationItems = [
   {
@@ -187,9 +186,6 @@ export function About() {
             </motion.div>
           </motion.div>
         </motion.div>
-
-        {/* Additional Tools & Platforms Marquee */}
-        <AdditionalToolsMarquee />
       </div>
     </section>
   );
