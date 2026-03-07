@@ -48,9 +48,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-xl text-primary font-semibold mb-4"
+              className="text-2xl text-primary font-bold mb-4"
             >
-              Machine Learning Engineer | Fullstack Web & Mobile Developer
+              Fullstack Developer & AI/IoT Enthusiast
             </motion.p>
 
             <motion.p
@@ -73,12 +73,12 @@ export function Hero() {
               className="flex gap-4 flex-wrap"
             >
               <motion.a
-                href="#projects"
+                href="/projects"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
               >
-                View Projects
+                Lihat Proyek
               </motion.a>
               <motion.a
                 href="#contact"
@@ -86,7 +86,7 @@ export function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
               >
-                Contact Me
+                Hubungi Saya
               </motion.a>
             </motion.div>
           </motion.div>

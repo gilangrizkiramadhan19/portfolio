@@ -4,19 +4,26 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isExperienceOpen, setIsExperienceOpen] = useState(false);
   const [isExperienceMobileOpen, setIsExperienceMobileOpen] = useState(false);
+  const pathname = usePathname();
 
-  const navItems = ['About', 'Skills', 'Projects', 'Experience', 'Contact'];
+  const navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Contact', href: '/', hash: 'contact' },
+  ];
   
   const experienceSubItems = [
-    { label: 'Pengalaman Profesional', id: 'experience' },
-    { label: 'Prestasi & Penghargaan', id: 'achievements' },
-    { label: 'Sertifikasi & Kredensial', id: 'certifications' },
-    { label: 'Hak Cipta Terdaftar dan Publikasi Jurnal', id: 'publications' },
+    { label: 'Pengalaman Profesional', hash: 'experience' },
+    { label: 'Prestasi & Penghargaan', hash: 'achievements' },
+    { label: 'Sertifikasi & Kredensial', hash: 'certifications' },
+    { label: 'Hak Cipta Terdaftar dan Publikasi Jurnal', hash: 'publications' },
   ];
 
   return (
@@ -28,25 +35,26 @@ export function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
-          <Link href="#" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             GR
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">
             {navItems.map((item) => {
-              // Render Experience dropdown instead of regular link
-              if (item === 'Experience') {
-                return null;
-              }
+              const isActive = pathname === item.href;
               return (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-foreground/70 hover:text-primary transition-colors duration-200 text-sm font-medium"
+                <Link
+                  key={item.label}
+                  href={item.hash ? `${item.href}#${item.hash}` : item.href}
+                  className={`transition-colors duration-200 text-sm font-medium ${
+                    isActive 
+                      ? 'text-primary' 
+                      : 'text-foreground/70 hover:text-primary'
+                  }`}
                 >
-                  {item}
-                </a>
+                  {item.label}
+                </Link>
               );
             })}
             
@@ -66,13 +74,13 @@ export function Navigation() {
                 onMouseLeave={() => setIsExperienceOpen(false)}
               >
                 {experienceSubItems.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
+                  <Link
+                    key={item.hash}
+                    href={`/#${item.hash}`}
                     className="block px-4 py-3 text-foreground/70 hover:text-primary hover:bg-accent/50 transition-colors text-sm font-medium first:rounded-t-md last:rounded-b-md border-b border-border/50 last:border-b-0"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -96,55 +104,56 @@ export function Navigation() {
             className="md:hidden mt-4 space-y-3 pb-4"
           >
             {navItems.map((item) => {
-              // Render Experience dropdown instead of regular link
-              if (item === 'Experience') {
-                return (
-                  <div key={item}>
-                    <button
-                      onClick={() => setIsExperienceMobileOpen(!isExperienceMobileOpen)}
-                      className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors py-2 w-full text-left font-medium text-sm"
-                    >
-                      Experience
-                      <ChevronDown size={16} className={`transition-transform duration-300 ${isExperienceMobileOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    
-                    {isExperienceMobileOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="ml-4 space-y-2 mt-2 border-l border-border/50 pl-4"
-                      >
-                        {experienceSubItems.map((subItem) => (
-                          <a
-                            key={subItem.id}
-                            href={`#${subItem.id}`}
-                            className="block text-foreground/70 hover:text-primary transition-colors py-2 text-sm"
-                            onClick={() => {
-                              setIsOpen(false);
-                              setIsExperienceMobileOpen(false);
-                            }}
-                          >
-                            {subItem.label}
-                          </a>
-                        ))}
-                      </motion.div>
-                    )}
-                  </div>
-                );
-              }
-              
+              const isActive = pathname === item.href;
               return (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="block text-foreground/70 hover:text-primary transition-colors py-2"
+                <Link
+                  key={item.label}
+                  href={item.hash ? `${item.href}#${item.hash}` : item.href}
+                  className={`block transition-colors py-2 text-sm font-medium ${
+                    isActive 
+                      ? 'text-primary' 
+                      : 'text-foreground/70 hover:text-primary'
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
-                  {item}
-                </a>
+                  {item.label}
+                </Link>
               );
             })}
+            
+            {/* Mobile Experience Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsExperienceMobileOpen(!isExperienceMobileOpen)}
+                className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors py-2 w-full text-left font-medium text-sm"
+              >
+                Experience
+                <ChevronDown size={16} className={`transition-transform duration-300 ${isExperienceMobileOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isExperienceMobileOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="ml-4 space-y-2 mt-2 border-l border-border/50 pl-4"
+                >
+                  {experienceSubItems.map((subItem) => (
+                    <Link
+                      key={subItem.hash}
+                      href={`/#${subItem.hash}`}
+                      className="block text-foreground/70 hover:text-primary transition-colors py-2 text-sm"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsExperienceMobileOpen(false);
+                      }}
+                    >
+                      {subItem.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </div>
           </motion.div>
         )}
       </div>
