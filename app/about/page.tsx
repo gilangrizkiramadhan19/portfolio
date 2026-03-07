@@ -1,5 +1,6 @@
 import { Navigation } from '@/components/navigation';
 import { About } from '@/components/about';
+import { Skills } from '@/components/skills';
 import { Experience } from '@/components/experience';
 import { Achievements } from '@/components/achievements';
 import { Certifications } from '@/components/certifications';
@@ -20,6 +21,8 @@ export default function AboutPage() {
       <div className="pt-20">
         <About />
       </div>
+      {/* Technical Skills */}
+      <Skills />
       {/* Pengalaman Profesional */}
       <Experience />
       {/* Prestasi & Penghargaan */}

@@ -188,6 +188,81 @@ const projects: Project[] = [
     demo: "#projects",
     category: "mobile",
   },
+  // Web Projects
+  {
+    id: 4,
+    title: "Aquaguards - Fish Pond Monitoring Dashboard",
+    description: "Real-time Web Dashboard for Tilapia Fish Pond Water Quality Monitoring System",
+    problem:
+      "Pemantauan kualitas air kolam ikan secara manual memerlukan waktu dan tenaga yang besar. Petani ikan kesulitan memantau parameter kritis seperti suhu, pH, dan oksigen terlarut secara real-time, yang dapat menyebabkan kematian massal ikan jika tidak ditangani tepat waktu.",
+    solution:
+      "Mengembangkan dashboard web real-time yang terintegrasi dengan sensor IoT untuk monitoring parameter kualitas air secara otomatis. Dashboard menampilkan status sistem, grafik tren 24 jam, dan alert system untuk kondisi abnormal. Dilengkapi dengan fitur refresh data dan visualisasi yang intuitif untuk memudahkan petani dalam mengambil keputusan.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "IoT Integration",
+      "Real-time Data",
+      "Chart.js",
+    ],
+    screens: [
+      {
+        title: "Dashboard Overview",
+        description:
+          "Tampilan utama dashboard menampilkan status sistem dan 4 parameter utama: Suhu Air (26.2°C), pH Air (6.9), Oksigen Terlarut (5.8 mg/L), dan Kekeruhan (2.9 NTU). Setiap parameter dilengkapi dengan indikator status Normal/Warning/Danger.",
+        image: "/aquaguards-dashboard.png",
+      },
+    ],
+    image: "/aquaguards-dashboard.png",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
+    category: "web",
+  },
+  // Design Projects
+  {
+    id: 5,
+    title: "Smart Agriculture UI/UX Design",
+    description: "Modern UI/UX Design System for Agricultural Technology Applications",
+    problem:
+      "Banyak aplikasi pertanian memiliki interface yang kompleks dan tidak user-friendly, menyulitkan petani yang kurang familiar dengan teknologi untuk menggunakan fitur-fitur canggih yang tersedia.",
+    solution:
+      "Merancang design system yang konsisten dan intuitif khusus untuk aplikasi pertanian, dengan fokus pada aksesibilitas, visual hierarchy yang jelas, dan penggunaan warna serta ikon yang mudah dipahami oleh berbagai kalangan pengguna.",
+    technologies: [
+      "Figma",
+      "UI/UX Design",
+      "Design System",
+      "Prototyping",
+      "User Research",
+    ],
+    image: "/project-1.jpg",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
+    category: "design",
+  },
+  // Other Projects
+  {
+    id: 6,
+    title: "Machine Learning Model - Crop Prediction",
+    description: "Predictive ML Model for Optimal Crop Recommendation Based on Soil & Climate Data",
+    problem:
+      "Petani sering kesulitan menentukan jenis tanaman yang optimal untuk ditanam berdasarkan kondisi lahan mereka, mengakibatkan produktivitas yang tidak maksimal dan kerugian ekonomi.",
+    solution:
+      "Mengembangkan model machine learning menggunakan algoritma Random Forest dan ensemble methods untuk memprediksi jenis tanaman optimal berdasarkan 7 parameter tanah (N, P, K, pH, suhu, kelembaban, curah hujan). Model dilatih dengan dataset dari berbagai wilayah pertanian Indonesia.",
+    technologies: [
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "Random Forest",
+      "SMOTE",
+      "Jupyter Notebook",
+    ],
+    image: "/prediksi.png",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
+    category: "other",
+  },
 ];
 
 const filterCategories = [
@@ -476,10 +551,10 @@ export function Projects() {
         </motion.div>
 
         <motion.div
+          key={activeFilter}
           variants={containerVariants}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          animate="show"
           className="space-y-12"
         >
           {filteredProjects.length > 0 ? (
