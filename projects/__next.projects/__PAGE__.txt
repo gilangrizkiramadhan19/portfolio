@@ -1,0 +1,8 @@
+1:"$Sreact.fragment"
+2:I[13474,["/portfolio/_next/static/chunks/dff9a081a3a0ca5b.js","/portfolio/_next/static/chunks/752a4f23da5b8952.js","/portfolio/_next/static/chunks/141a180696cdcbb1.js"],"Navigation"]
+3:I[80976,["/portfolio/_next/static/chunks/dff9a081a3a0ca5b.js","/portfolio/_next/static/chunks/752a4f23da5b8952.js","/portfolio/_next/static/chunks/141a180696cdcbb1.js"],"Projects"]
+4:I[76841,["/portfolio/_next/static/chunks/dff9a081a3a0ca5b.js","/portfolio/_next/static/chunks/752a4f23da5b8952.js","/portfolio/_next/static/chunks/141a180696cdcbb1.js"],"Footer"]
+5:I[97367,["/portfolio/_next/static/chunks/ff1a16fafef87110.js","/portfolio/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+0:{"buildId":"ntFGeWpQo3_XvPZFml3u6","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"w-full bg-background text-foreground","children":[["$","$L2",null,{}],["$","div",null,{"className":"pt-20","children":["$","$L3",null,{}]}],["$","$L4",null,{}]]}],[["$","script","script-0",{"src":"/portfolio/_next/static/chunks/752a4f23da5b8952.js","async":true}],["$","script","script-1",{"src":"/portfolio/_next/static/chunks/141a180696cdcbb1.js","async":true}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],"loading":null,"isPartial":false}
+7:null
