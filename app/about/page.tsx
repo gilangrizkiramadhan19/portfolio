@@ -1,24 +1,27 @@
 import { Navigation } from '@/components/navigation';
-import { Hero } from '@/components/hero';
 import { About } from '@/components/about';
 import { Skills } from '@/components/skills';
-import { Projects } from '@/components/projects';
 import { Experience } from '@/components/experience';
 import { Achievements } from '@/components/achievements';
 import { Certifications } from '@/components/certifications';
 import { Publications } from '@/components/publications';
-import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
+import { Metadata } from 'next';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'About - Gilang Rizki Ramadhan',
+  description: 'Learn more about Gilang Rizki Ramadhan - Machine Learning Engineer & Fullstack Developer. Professional experience, achievements, certifications, and publications.',
+};
+
+export default function AboutPage() {
   return (
     <main className="w-full bg-background text-foreground">
       <Navigation />
-      {/* Hero Section - Welcome to Portfolio */}
-      <Hero />
       {/* About Me Section */}
-      <About />
-      {/* Skills Section */}
+      <div className="pt-20">
+        <About />
+      </div>
+      {/* Technical Skills */}
       <Skills />
       {/* Pengalaman Profesional */}
       <Experience />
@@ -28,10 +31,6 @@ export default function Home() {
       <Certifications />
       {/* Publikasi Jurnal */}
       <Publications />
-      {/* Featured Projects */}
-      <Projects />
-      {/* Contact Section */}
-      <Contact />
       <Footer />
     </main>
   );

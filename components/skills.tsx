@@ -1,50 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+interface Skill {
+  name: string;
+  icon: string;
+}
 
 interface SkillCategory {
   category: string;
-  skills: {
-    name: string;
-    level: number;
-  }[];
+  skills: Skill[];
 }
 
 const skillsData: SkillCategory[] = [
   {
     category: "Mobile Development",
     skills: [
-      { name: "Flutter", level: 85 },
-      { name: "Dart", level: 85 },
-      { name: "Android Development", level: 60 },
-      { name: "Mobile UI/UX", level: 75 },
+      { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+      { name: "Dart", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" },
+      { name: "Android", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" },
+      { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
     ],
   },
   {
     category: "Backend & API",
     skills: [
-      { name: "Python", level: 85 },
-      { name: "FastAPI", level: 85 },
-      { name: "REST API", level: 85 },
-      { name: "Flask & Django", level: 85 },
+      { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "FastAPI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+      { name: "Flask", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
+      { name: "Django", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
     ],
   },
   {
     category: "AI & Data Science",
     skills: [
-      { name: "Machine Learning", level: 80 },
-      { name: "Scikit-learn", level: 85 },
-      { name: "Pandas & Data Analysis", level: 85 },
-      { name: "TensorFlow", level: 80 },
+      { name: "TensorFlow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+      { name: "Scikit-learn", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" },
+      { name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+      { name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
     ],
   },
   {
-    category: "Database & DevOps",
+    category: "Database & Tools",
     skills: [
-      { name: "PostgreSQL & MySQL", level: 88 },
-      { name: "InfluxDB (Time-series)", level: 85 },
-      { name: "Firebase", level: 85 },
-      { name: "Git & GitHub", level: 85 },
+      { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+      { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
     ],
   },
 ];
@@ -54,7 +57,7 @@ const containerVariants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
       delayChildren: 0.2,
     },
   },
@@ -67,63 +70,67 @@ const itemVariants = {
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/30">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Technical <span className="text-primary">Skills</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            Technical <span className="text-primary">Arsenal</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-6" />
+          <p className="text-foreground/60 text-lg">
+            My preferred weapons of choice.
+          </p>
         </motion.div>
 
+        {/* Skills Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-12"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {skillsData.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
               variants={itemVariants}
-              className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors"
+              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-all hover:shadow-lg"
             >
-              <h3 className="text-2xl font-bold mb-8 text-primary">
+              {/* Category Title */}
+              <h3 className="text-xl font-bold text-foreground mb-6 text-center">
                 {category.category}
               </h3>
-              <div className="space-y-6">
+
+              {/* Skills Icons Grid */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
                 {category.skills.map((skill, skillIndex) => (
-                  <motion.div key={skillIndex} variants={itemVariants}>
-                    <div className="flex justify-between mb-2">
-                      <span className="font-semibold text-foreground">
-                        {skill.name}
-                      </span>
-                      <span className="text-primary font-bold">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.8,
-                          delay: 0.2 + skillIndex * 0.1,
-                        }}
-                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
-                      />
-                    </div>
+                  <motion.div
+                    key={skillIndex}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="flex items-center justify-center p-4 bg-background rounded-xl hover:shadow-md transition-all cursor-pointer"
+                  >
+                    <Image
+                      src={skill.icon}
+                      alt={skill.name}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
                   </motion.div>
                 ))}
               </div>
+
+              {/* Skill Names */}
+              <p className="text-center text-foreground/60 text-sm leading-relaxed">
+                {category.skills.map(s => s.name).join(", ")}
+              </p>
             </motion.div>
           ))}
         </motion.div>
@@ -133,13 +140,13 @@ export function Skills() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-8"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 bg-card border border-border rounded-2xl p-8"
         >
-          <h3 className="text-2xl font-bold mb-6 text-primary">
+          <h3 className="text-2xl font-bold mb-6 text-center">
             Additional Tools & Platforms
           </h3>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {[
               "Postman",
               "GitHub",
@@ -149,15 +156,15 @@ export function Skills() {
               "Google Colab",
               "Laragon",
               "XAMPP",
-              "Git",
               "Mikrotik",
               "Ubuntu Server",
               "AWS Academy",
+              "InfluxDB",
             ].map((tool, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.1, backgroundColor: "#58a6ff" }}
-                className="px-4 py-2 bg-background border border-primary/30 rounded-lg text-foreground hover:text-primary-foreground transition-all cursor-default"
+                whileHover={{ scale: 1.05 }}
+                className="px-4 py-2 bg-background border border-border rounded-lg text-foreground/70 font-medium hover:border-primary/50 hover:text-primary transition-all"
               >
                 {tool}
               </motion.div>

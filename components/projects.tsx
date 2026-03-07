@@ -31,6 +31,7 @@ interface Project {
   github: string;
   demo: string;
   screens?: AppScreen[];
+  category: "mobile" | "web" | "design" | "other";
 }
 
 const projects: Project[] = [
@@ -88,6 +89,7 @@ const projects: Project[] = [
     image: "/project-1.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
+    category: "mobile",
   },
   {
     id: 2,
@@ -135,6 +137,7 @@ const projects: Project[] = [
     image: "/smartila-login.jpeg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
+    category: "mobile",
   },
   {
     id: 3,
@@ -180,11 +183,97 @@ const projects: Project[] = [
         image: "/croppred.jpeg",
       },
     ],
-    image: "/Dashboard 7 in 1.jpeg", // ← gambar utama di halaman portfolio
+    image: "/Dashboard 7 in 1.jpeg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
+    category: "mobile",
+  },
+  // Web Projects
+  {
+    id: 4,
+    title: "Aquaguards - Fish Pond Monitoring Dashboard",
+    description: "Real-time Web Dashboard for Tilapia Fish Pond Water Quality Monitoring System",
+    problem:
+      "Pemantauan kualitas air kolam ikan secara manual memerlukan waktu dan tenaga yang besar. Petani ikan kesulitan memantau parameter kritis seperti suhu, pH, dan oksigen terlarut secara real-time, yang dapat menyebabkan kematian massal ikan jika tidak ditangani tepat waktu.",
+    solution:
+      "Mengembangkan dashboard web real-time yang terintegrasi dengan sensor IoT untuk monitoring parameter kualitas air secara otomatis. Dashboard menampilkan status sistem, grafik tren 24 jam, dan alert system untuk kondisi abnormal. Dilengkapi dengan fitur refresh data dan visualisasi yang intuitif untuk memudahkan petani dalam mengambil keputusan.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "IoT Integration",
+      "Real-time Data",
+      "Chart.js",
+    ],
+    screens: [
+      {
+        title: "Dashboard Overview",
+        description:
+          "Tampilan utama dashboard menampilkan status sistem dan 4 parameter utama: Suhu Air (26.2°C), pH Air (6.9), Oksigen Terlarut (5.8 mg/L), dan Kekeruhan (2.9 NTU). Setiap parameter dilengkapi dengan indikator status Normal/Warning/Danger.",
+        image: "/aquaguards-dashboard.png",
+      },
+    ],
+    image: "/aquaguards-dashboard.png",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
+    category: "web",
+  },
+  // Design Projects
+  {
+    id: 5,
+    title: "Smart Agriculture UI/UX Design",
+    description: "Modern UI/UX Design System for Agricultural Technology Applications",
+    problem:
+      "Banyak aplikasi pertanian memiliki interface yang kompleks dan tidak user-friendly, menyulitkan petani yang kurang familiar dengan teknologi untuk menggunakan fitur-fitur canggih yang tersedia.",
+    solution:
+      "Merancang design system yang konsisten dan intuitif khusus untuk aplikasi pertanian, dengan fokus pada aksesibilitas, visual hierarchy yang jelas, dan penggunaan warna serta ikon yang mudah dipahami oleh berbagai kalangan pengguna.",
+    technologies: [
+      "Figma",
+      "UI/UX Design",
+      "Design System",
+      "Prototyping",
+      "User Research",
+    ],
+    image: "/project-1.jpg",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
+    category: "design",
+  },
+  // Other Projects
+  {
+    id: 6,
+    title: "Machine Learning Model - Crop Prediction",
+    description: "Predictive ML Model for Optimal Crop Recommendation Based on Soil & Climate Data",
+    problem:
+      "Petani sering kesulitan menentukan jenis tanaman yang optimal untuk ditanam berdasarkan kondisi lahan mereka, mengakibatkan produktivitas yang tidak maksimal dan kerugian ekonomi.",
+    solution:
+      "Mengembangkan model machine learning menggunakan algoritma Random Forest dan ensemble methods untuk memprediksi jenis tanaman optimal berdasarkan 7 parameter tanah (N, P, K, pH, suhu, kelembaban, curah hujan). Model dilatih dengan dataset dari berbagai wilayah pertanian Indonesia.",
+    technologies: [
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "Random Forest",
+      "SMOTE",
+      "Jupyter Notebook",
+    ],
+    image: "/prediksi.png",
+    github: "https://github.com/gilangrizkiramadhan19",
+    demo: "#projects",
+    category: "other",
   },
 ];
+
+const filterCategories = [
+  { id: "all", label: "Semua" },
+  { id: "web", label: "Web" },
+  { id: "mobile", label: "Mobile" },
+  { id: "design", label: "Design" },
+  { id: "other", label: "Other" },
+] as const;
+
+type FilterCategory = typeof filterCategories[number]["id"];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -414,6 +503,11 @@ function ProjectModal({
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
+
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/50">
@@ -423,7 +517,7 @@ export function Projects() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-8"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="text-primary">Projects</span>
@@ -431,14 +525,40 @@ export function Projects() {
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
         </motion.div>
 
+        {/* Filter Buttons */}
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap gap-3 mb-12"
+        >
+          {filterCategories.map((category) => (
+            <motion.button
+              key={category.id}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveFilter(category.id)}
+              className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                activeFilter === category.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-card border border-border text-foreground/70 hover:border-primary/50 hover:text-primary"
+              }`}
+            >
+              {category.label}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        <motion.div
+          key={activeFilter}
           variants={containerVariants}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          animate="show"
           className="space-y-12"
         >
-          {projects.map((project, index) => (
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
@@ -539,7 +659,18 @@ export function Projects() {
                 </div>
               </div>
             </motion.div>
-          ))}
+            ))
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-16"
+            >
+              <p className="text-foreground/60 text-lg">
+                Belum ada project untuk kategori ini.
+              </p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 

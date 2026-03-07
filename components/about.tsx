@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Download } from "lucide-react";
 
 const educationItems = [
   {
@@ -55,12 +55,24 @@ export function About() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="text-primary">Me</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              About <span className="text-primary">Me</span>
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
+          </div>
+          <motion.a
+            href="/cv-gilang-rizki-ramadhan.pdf"
+            download
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+          >
+            <Download size={20} />
+            Download CV
+          </motion.a>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
