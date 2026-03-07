@@ -135,40 +135,94 @@ export function Skills() {
           ))}
         </motion.div>
 
-        {/* Additional Tools */}
+        {/* Additional Tools & Platforms with Logo Marquee */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 bg-card border border-border rounded-2xl p-8"
+          className="mt-20"
         >
-          <h3 className="text-2xl font-bold mb-6 text-center">
-            Additional Tools & Platforms
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              "Postman",
-              "GitHub",
-              "VS Code",
-              "Android Studio",
-              "PyCharm",
-              "Google Colab",
-              "Laragon",
-              "XAMPP",
-              "Mikrotik",
-              "Ubuntu Server",
-              "AWS Academy",
-              "InfluxDB",
-            ].map((tool, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 bg-background border border-border rounded-lg text-foreground/70 font-medium hover:border-primary/50 hover:text-primary transition-all"
-              >
-                {tool}
-              </motion.div>
-            ))}
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">
+              Additional Tools & Platforms
+            </h3>
+            <p className="text-foreground/60">
+              Tools and platforms that power my development workflow
+            </p>
+          </div>
+
+          {/* Logo Marquee */}
+          <div className="relative overflow-hidden bg-card border border-border rounded-2xl py-8">
+            {/* Gradient Overlay Left */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+            
+            {/* Gradient Overlay Right */}
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+
+            {/* Marquee Container */}
+            <div className="flex animate-marquee gap-8 px-4">
+              {[
+                { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+                { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+                { name: "Android Studio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" },
+                { name: "PyCharm", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" },
+                { name: "Google Colab", icon: "https://www.gstatic.com/images/branding/product/1x/colab_128dp.png" },
+                { name: "Laragon", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" },
+                { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                { name: "Ubuntu Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg" },
+                { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+                { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
+              ].map((tool, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  className="flex flex-col items-center gap-3 px-6 py-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all cursor-pointer flex-shrink-0 min-w-[120px]"
+                >
+                  <Image
+                    src={tool.icon}
+                    alt={tool.name}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                  <span className="text-sm font-medium text-foreground/70 text-center">
+                    {tool.name}
+                  </span>
+                </motion.div>
+              ))}
+              
+              {/* Duplicate for seamless loop */}
+              {[
+                { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+                { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+                { name: "Android Studio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" },
+                { name: "PyCharm", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" },
+                { name: "Google Colab", icon: "https://www.gstatic.com/images/branding/product/1x/colab_128dp.png" },
+                { name: "Laragon", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" },
+                { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                { name: "Ubuntu Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg" },
+                { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+                { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
+              ].map((tool, index) => (
+                <motion.div
+                  key={`dup-${index}`}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  className="flex flex-col items-center gap-3 px-6 py-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all cursor-pointer flex-shrink-0 min-w-[120px]"
+                >
+                  <Image
+                    src={tool.icon}
+                    alt={tool.name}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                  <span className="text-sm font-medium text-foreground/70 text-center">
+                    {tool.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
