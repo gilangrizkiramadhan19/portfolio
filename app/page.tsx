@@ -3,7 +3,7 @@ import { Hero } from '@/components/hero';
 import { About } from '@/components/about';
 import { Skills } from '@/components/skills';
 import { FeaturedProjects } from '@/components/featured-projects';
-import { TechnicalArsenal } from '@/components/technical-arsenal';
+import { AdditionalTools } from '@/components/additional-tools';
 import { Experience } from '@/components/experience';
 import { Achievements } from '@/components/achievements';
 import { Certifications } from '@/components/certifications';
@@ -29,8 +29,8 @@ export default function Home() {
       <Certifications />
       {/* Publikasi Jurnal */}
       <Publications />
-      {/* Technical Arsenal Section */}
-      <TechnicalArsenal />
+      {/* Additional Tools & Platforms */}
+      <AdditionalTools />
       {/* Featured Projects */}
       <FeaturedProjects />
       {/* Contact Section */}

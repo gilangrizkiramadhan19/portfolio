@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Download } from "lucide-react";
+import { AdditionalTools } from "./additional-tools";
 
 const educationItems = [
   {
@@ -185,6 +186,11 @@ export function About() {
               </div>
             </motion.div>
           </motion.div>
+        </div>
+
+        {/* Additional Tools Section */}
+        <div className="mt-20">
+          <AdditionalTools />
         </div>
       </div>
     </section>
