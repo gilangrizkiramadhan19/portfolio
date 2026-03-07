@@ -13,7 +13,6 @@ export function Navigation() {
   const pathname = usePathname();
 
   const navItems = [
-    { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Projects', href: '/projects' },
     { label: 'Contact', href: '/', hash: 'contact' },
