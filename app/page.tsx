@@ -2,7 +2,8 @@ import { Navigation } from '@/components/navigation';
 import { Hero } from '@/components/hero';
 import { About } from '@/components/about';
 import { Skills } from '@/components/skills';
-import { Projects } from '@/components/projects';
+import { FeaturedProjects } from '@/components/featured-projects';
+import { TechnicalArsenal } from '@/components/technical-arsenal';
 import { Experience } from '@/components/experience';
 import { Achievements } from '@/components/achievements';
 import { Certifications } from '@/components/certifications';
@@ -28,8 +29,10 @@ export default function Home() {
       <Certifications />
       {/* Publikasi Jurnal */}
       <Publications />
+      {/* Technical Arsenal Section */}
+      <TechnicalArsenal />
       {/* Featured Projects */}
-      <Projects />
+      <FeaturedProjects />
       {/* Contact Section */}
       <Contact />
       <Footer />
