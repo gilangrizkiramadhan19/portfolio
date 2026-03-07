@@ -1,51 +1,43 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { 
+  Smartphone, 
+  Server, 
+  Brain, 
+  Database,
+  Code2,
+  Layers,
+  Cpu,
+  Globe
+} from "lucide-react";
 
 interface SkillCategory {
   category: string;
-  skills: {
-    name: string;
-    level: number;
-  }[];
+  icon: React.ElementType;
+  skills: string[];
 }
 
 const skillsData: SkillCategory[] = [
   {
     category: "Mobile Development",
-    skills: [
-      { name: "Flutter", level: 85 },
-      { name: "Dart", level: 85 },
-      { name: "Android Development", level: 60 },
-      { name: "Mobile UI/UX", level: 75 },
-    ],
+    icon: Smartphone,
+    skills: ["Flutter", "Dart", "Android Development", "Mobile UI/UX"],
   },
   {
     category: "Backend & API",
-    skills: [
-      { name: "Python", level: 85 },
-      { name: "FastAPI", level: 85 },
-      { name: "REST API", level: 85 },
-      { name: "Flask & Django", level: 85 },
-    ],
+    icon: Server,
+    skills: ["Python", "FastAPI", "REST API", "Flask & Django"],
   },
   {
     category: "AI & Data Science",
-    skills: [
-      { name: "Machine Learning", level: 80 },
-      { name: "Scikit-learn", level: 85 },
-      { name: "Pandas & Data Analysis", level: 85 },
-      { name: "TensorFlow", level: 80 },
-    ],
+    icon: Brain,
+    skills: ["Machine Learning", "Scikit-learn", "Pandas & Data Analysis", "TensorFlow"],
   },
   {
     category: "Database & DevOps",
-    skills: [
-      { name: "PostgreSQL & MySQL", level: 88 },
-      { name: "InfluxDB (Time-series)", level: 85 },
-      { name: "Firebase", level: 85 },
-      { name: "Git & GitHub", level: 85 },
-    ],
+    icon: Database,
+    skills: ["PostgreSQL & MySQL", "InfluxDB (Time-series)", "Firebase", "Git & GitHub"],
   },
 ];
 
@@ -89,43 +81,37 @@ export function Skills() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-12"
         >
-          {skillsData.map((category, categoryIndex) => (
-            <motion.div
-              key={categoryIndex}
-              variants={itemVariants}
-              className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors"
-            >
-              <h3 className="text-2xl font-bold mb-8 text-primary">
-                {category.category}
-              </h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.div key={skillIndex} variants={itemVariants}>
-                    <div className="flex justify-between mb-2">
-                      <span className="font-semibold text-foreground">
-                        {skill.name}
-                      </span>
-                      <span className="text-primary font-bold">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.8,
-                          delay: 0.2 + skillIndex * 0.1,
-                        }}
-                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          {skillsData.map((category, categoryIndex) => {
+            const IconComponent = category.icon;
+            return (
+              <motion.div
+                key={categoryIndex}
+                variants={itemVariants}
+                className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors group"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                    <IconComponent className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-primary">
+                    {category.category}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.span
+                      key={skillIndex}
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.05 }}
+                      className="px-4 py-2 bg-background border border-border rounded-lg text-foreground/80 font-medium hover:border-primary/50 hover:text-primary transition-colors"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Additional Tools */}

@@ -1,9 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
-import { basePath } from "@/lib/utils"; // ← Import ini
+import { basePath } from "@/lib/utils";
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com/gilangrizkiramadhan19", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/gilangrizkiramadhan", label: "LinkedIn" },
+  { icon: Mail, href: "#contact", label: "Email" },
+];
+
+const roles = [
+  "Machine Learning Engineer",
+  "Fullstack Developer",
+  "Mobile Developer",
+];
 
 export function Hero() {
   return (
@@ -25,18 +37,18 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-6"
+              className="mb-4"
             >
-              <p className="text-primary font-semibold text-lg">
+              <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-medium">
                 Welcome to my portfolio
-              </p>
+              </span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-balance"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-balance"
             >
               Gilang Rizki{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -44,27 +56,45 @@ export function Hero() {
               </span>
             </motion.h1>
 
-            <motion.p
+            {/* Roles Tags */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-xl text-primary font-semibold mb-4"
+              className="flex flex-wrap gap-2 mb-8"
             >
-              Machine Learning Engineer | Fullstack Web & Mobile Developer
-            </motion.p>
+              {roles.map((role, index) => (
+                <span
+                  key={index}
+                  className="px-4 py-2 bg-card border border-border rounded-lg text-foreground/80 text-sm font-medium"
+                >
+                  {role}
+                </span>
+              ))}
+            </motion.div>
 
-            <motion.p
+            {/* Social Links */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-lg text-foreground/70 mb-8 max-w-lg leading-relaxed"
+              className="flex items-center gap-4 mb-8"
             >
-              Mahasiswa D4 Teknologi Rekayasa Internet dengan fokus pada
-              pengembangan sistem berbasis AI, backend engineering, serta
-              integrasi machine learning dalam aplikasi web dan mobile. Peraih
-              Juara 2 Nasional AITECH 2024 dengan berbagai proyek inovasi
-              teknologi berbasis data dan IoT.
-            </motion.p>
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 bg-card border border-border rounded-lg text-foreground/70 hover:text-primary hover:border-primary/50 transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon size={20} />
+                </motion.a>
+              ))}
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

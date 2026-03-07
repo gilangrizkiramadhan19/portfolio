@@ -31,6 +31,7 @@ interface Project {
   github: string;
   demo: string;
   screens?: AppScreen[];
+  category: "mobile" | "web" | "design" | "other";
 }
 
 const projects: Project[] = [
@@ -88,6 +89,7 @@ const projects: Project[] = [
     image: "/project-1.jpg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
+    category: "mobile",
   },
   {
     id: 2,
@@ -135,6 +137,7 @@ const projects: Project[] = [
     image: "/smartila-login.jpeg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
+    category: "mobile",
   },
   {
     id: 3,
@@ -180,11 +183,22 @@ const projects: Project[] = [
         image: "/croppred.jpeg",
       },
     ],
-    image: "/Dashboard 7 in 1.jpeg", // ← gambar utama di halaman portfolio
+    image: "/Dashboard 7 in 1.jpeg",
     github: "https://github.com/gilangrizkiramadhan19",
     demo: "#projects",
+    category: "mobile",
   },
 ];
+
+const filterCategories = [
+  { id: "all", label: "Semua" },
+  { id: "web", label: "Web" },
+  { id: "mobile", label: "Mobile" },
+  { id: "design", label: "Design" },
+  { id: "other", label: "Other" },
+] as const;
+
+type FilterCategory = typeof filterCategories[number]["id"];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -414,6 +428,11 @@ function ProjectModal({
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
+
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/50">
@@ -423,12 +442,37 @@ export function Projects() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-8"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="text-primary">Projects</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
+        </motion.div>
+
+        {/* Filter Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap gap-3 mb-12"
+        >
+          {filterCategories.map((category) => (
+            <motion.button
+              key={category.id}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveFilter(category.id)}
+              className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                activeFilter === category.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-card border border-border text-foreground/70 hover:border-primary/50 hover:text-primary"
+              }`}
+            >
+              {category.label}
+            </motion.button>
+          ))}
         </motion.div>
 
         <motion.div
@@ -438,7 +482,8 @@ export function Projects() {
           viewport={{ once: true }}
           className="space-y-12"
         >
-          {projects.map((project, index) => (
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
@@ -539,7 +584,18 @@ export function Projects() {
                 </div>
               </div>
             </motion.div>
-          ))}
+            ))
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-16"
+            >
+              <p className="text-foreground/60 text-lg">
+                Belum ada project untuk kategori ini.
+              </p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
