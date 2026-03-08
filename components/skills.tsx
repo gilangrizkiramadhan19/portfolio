@@ -152,16 +152,16 @@ export function Skills() {
             </p>
           </div>
 
-          {/* Logo Marquee */}
-          <div className="relative overflow-hidden bg-card border border-border rounded-2xl py-8">
-            {/* Gradient Overlay Left */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+          {/* Logo Marquee - Desktop Scrolling, Mobile Grid */}
+          <div className="relative overflow-hidden bg-card border border-border rounded-2xl py-8 md:py-8 md:overflow-x-auto">
+            {/* Gradient Overlay Left - Only on Desktop */}
+            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
             
-            {/* Gradient Overlay Right */}
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+            {/* Gradient Overlay Right - Only on Desktop */}
+            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
-            {/* Marquee Container */}
-            <div className="flex animate-marquee gap-8 px-4">
+            {/* Marquee Container - Desktop: Scrolling | Mobile: Grid */}
+            <div className="hidden md:flex md:animate-marquee gap-8 px-4">
               {[
                 { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
                 { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
@@ -218,6 +218,39 @@ export function Skills() {
                     className="object-contain"
                   />
                   <span className="text-sm font-medium text-foreground/70 text-center">
+                    {tool.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Mobile Grid View - Only on Mobile */}
+            <div className="flex md:hidden flex-wrap justify-center gap-4 px-4">
+              {[
+                { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+                { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+                { name: "Android Studio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" },
+                { name: "PyCharm", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" },
+                { name: "Google Colab", icon: "https://www.gstatic.com/images/branding/product/1x/colab_128dp.png" },
+                { name: "Laragon", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" },
+                { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                { name: "Ubuntu Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg" },
+                { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+                { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
+              ].map((tool, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  className="flex flex-col items-center gap-2 px-4 py-3 bg-background border border-border rounded-lg hover:border-primary/50 transition-all cursor-pointer w-[calc(50%-8px)]"
+                >
+                  <Image
+                    src={tool.icon}
+                    alt={tool.name}
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                  <span className="text-xs font-medium text-foreground/70 text-center">
                     {tool.name}
                   </span>
                 </motion.div>
