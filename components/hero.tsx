@@ -30,7 +30,7 @@ export function Hero() {
           <div className="relative w-[500px] h-[500px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px]">
             {/* Circular Background */}
             <div className="absolute inset-0 rounded-full bg-muted/50" />
-            
+
             {/* Photo */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-64 h-80 md:w-72 md:h-96 lg:w-80 lg:h-[420px] overflow-hidden">
@@ -54,10 +54,10 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none tracking-tight"
           >
-            <span className="text-foreground">Building</span>{" "}
+            <span className="text-foreground">Engineering</span>{" "}
             <span className="text-foreground/40">Digital</span>
             <br />
-            <span className="text-foreground/40">Value</span>
+            <span className="text-foreground/40">Experiences</span>
             <span className="text-primary">.</span>
           </motion.h1>
 
@@ -68,10 +68,10 @@ export function Hero() {
             className="mt-8 space-y-2"
           >
             <p className="text-foreground/60 text-lg md:text-xl">
-              I build innovative solutions that stand out.
+              Creating modern digital solutions.
             </p>
             <p className="text-foreground font-semibold text-lg md:text-xl">
-              Modern & Intelligent.
+              Smart, scalable, and impactful.
             </p>
           </motion.div>
 
@@ -113,7 +113,12 @@ export function Hero() {
           }}
           className="flex gap-8 whitespace-nowrap"
         >
-          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, index) => (
+          {[
+            ...marqueeItems,
+            ...marqueeItems,
+            ...marqueeItems,
+            ...marqueeItems,
+          ].map((item, index) => (
             <div key={index} className="flex items-center gap-8">
               <span className="text-sm font-semibold tracking-widest text-foreground/70">
                 {item}

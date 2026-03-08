@@ -55,9 +55,9 @@ export function ProjectModal({
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
       >
-        <div className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-screen overflow-y-auto">
+        <div className="bg-background border border-border rounded-2xl max-w-7xl w-full max-h-[90vh] overflow-y-auto">
           <div className="relative">
             {/* Close Button */}
             <button
@@ -68,16 +68,16 @@ export function ProjectModal({
             </button>
 
             {/* Header */}
-            <div className="border-b border-border p-8 pb-6">
-              <h2 className="text-3xl font-bold text-primary mb-2">
+            <div className="border-b border-border p-8 md:p-10 pb-8 md:pb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-3">
                 {project.title}
               </h2>
-              <p className="text-foreground/80 font-semibold mb-6">
+              <p className="text-lg md:text-xl text-foreground/80 font-semibold mb-8">
                 {project.description}
               </p>
 
               {/* Problem & Solution */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-sm font-semibold text-primary mb-2">
                     PROBLEM
@@ -99,48 +99,91 @@ export function ProjectModal({
 
             {/* Screens Carousel */}
             {screens.length > 0 && currentScreen && (
-              <div className="p-8">
-                <h3 className="text-lg font-semibold text-primary mb-4">
-                  App Features ({currentScreenIndex + 1} of {screens.length})
+              <div className="p-8 md:p-10">
+                <h3 className="text-lg font-semibold text-primary mb-6">
+                  {project.category === "mobile" ? "App Screenshots" : "Features"} ({currentScreenIndex + 1} of {screens.length})
                 </h3>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-                  {/* Mockup Image */}
-                  <motion.div
-                    key={currentScreenIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-center justify-center md:order-1"
-                  >
-                    <div className="relative w-48 h-72 md:w-56 md:h-96 overflow-hidden rounded-lg bg-muted flex-shrink-0">
-                      <Image
-                        src={`${basePath}${currentScreen.image}`}
-                        alt={currentScreen.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </motion.div>
+                {/* Mobile Category Layout - Side by Side */}
+                {project.category === "mobile" && (
+                  <div className="grid md:grid-cols-2 gap-12 mb-10">
+                    {/* Phone Mockup - Left */}
+                    <motion.div
+                      key={currentScreenIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center justify-center"
+                    >
+                      <div className="relative w-56 h-96 sm:w-64 sm:h-[448px] md:w-72 md:h-[512px] overflow-hidden rounded-3xl bg-muted border-8 border-black shadow-2xl flex-shrink-0">
+                        <Image
+                          src={`${basePath}${currentScreen.image}`}
+                          alt={currentScreen.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </motion.div>
 
-                  {/* Screen Description */}
-                  <motion.div
-                    key={`desc-${currentScreenIndex}`}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex flex-col justify-center md:order-2"
-                  >
-                    <h4 className="text-xl md:text-2xl font-bold text-primary mb-4">
-                      {currentScreen.title}
-                    </h4>
-                    <p className="text-foreground/70 leading-relaxed text-sm md:text-base">
-                      {currentScreen.description}
-                    </p>
-                  </motion.div>
-                </div>
+                    {/* Description - Right */}
+                    <motion.div
+                      key={`desc-${currentScreenIndex}`}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex flex-col justify-center"
+                    >
+                      <h4 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                        {currentScreen.title}
+                      </h4>
+                      <p className="text-foreground/70 leading-relaxed text-base md:text-lg">
+                        {currentScreen.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                )}
+
+                {/* Web & Other Category Layout - Full Width */}
+                {(project.category === "web" || project.category === "design" || project.category === "other") && (
+                  <div className="mb-10">
+                    {/* Large Web Screenshot */}
+                    <motion.div
+                      key={currentScreenIndex}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="mb-8 w-full"
+                    >
+                      <div className="relative w-full max-w-5xl mx-auto aspect-video overflow-hidden rounded-xl bg-muted border border-border shadow-lg">
+                        <Image
+                          src={`${basePath}${currentScreen.image}`}
+                          alt={currentScreen.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </motion.div>
+
+                    {/* Description Below */}
+                    <motion.div
+                      key={`desc-${currentScreenIndex}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <h4 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                        {currentScreen.title}
+                      </h4>
+                      <p className="text-foreground/70 leading-relaxed text-base md:text-lg max-w-3xl">
+                        {currentScreen.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                )}
 
                 {/* Navigation */}
                 <div className="flex items-center justify-between gap-4 pt-6 border-t border-border">

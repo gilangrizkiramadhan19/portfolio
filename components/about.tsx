@@ -6,8 +6,8 @@ import { CheckCircle2, Download } from "lucide-react";
 const educationItems = [
   {
     degree: "D4 Teknologi Rekayasa Internet (Semester 6)",
-    institution: "Politeknik Negeri Lampung",
-    year: "2021 – Sekarang",
+    institution: "Politeknik Negeri Lampung | 2021 – Sekarang",
+    year: "2021 - Sekarang",
     gpa: "IPK: 3.96 / 4.00",
     achievement:
       "2nd Winner – Skilled Category (Smart and Precision Farming), 6th Agricultural Innovation Technology Competition (AITeC VI) 2024",
@@ -15,18 +15,10 @@ const educationItems = [
   {
     degree: "Rekayasa Perangkat Lunak",
     institution: "SMK Negeri 4 Bandar Lampung",
-    year: "2018 – 2021",
+    year: "2018 - 2021",
     gpa: "Nilai: 90.00 / 100",
     achievement: "Lulus Uji Kompetensi Keahlian",
   },
-];
-
-const focusAreas = [
-  "Mobile Application Development (Flutter & Dart)",
-  "Applied Machine Learning & AI Integration",
-  "Backend API Development (RESTful Architecture)",
-  "IoT System Integration & Real-Time Data Processing",
-  "Database Design, Schema Modeling & Query Optimization (PostgreSQL, MySQL, InfluxDB)",
 ];
 
 const softSkills = [
@@ -42,111 +34,97 @@ const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
   },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0 },
 };
 
 export function About() {
   return (
-    <section
-      id="about"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30"
-    >
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/50">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+          transition={{ duration: 0.5 }}
+          className="mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
         >
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
               About <span className="text-primary">Me</span>
             </h2>
-            <div className="w-20 h-1 mt-4 bg-gradient-to-r from-primary to-primary/60 rounded-full" />
+            <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
           </div>
-
           <motion.a
             href="/cv-gilang-rizki-ramadhan.pdf"
             download
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
           >
             <Download size={20} />
             Download CV
           </motion.a>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Kolom Kiri */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Left Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="space-y-12"
+            className="space-y-8"
           >
-            {/* Professional Background */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-5 text-foreground">
+              <h3 className="text-2xl font-bold mb-4">
                 Professional Background
               </h3>
-              <div className="space-y-5 text-foreground/80 leading-relaxed text-base">
-                <p>
-                  Mahasiswa semester 6 D4 Teknologi Rekayasa Internet dengan
-                  fokus pada pengembangan sistem berbasis AI, backend
-                  engineering, dan integrasi machine learning dalam aplikasi web
-                  serta IoT.
-                </p>
-                <p>
-                  Berpengalaman membangun REST API menggunakan Python dan
-                  FastAPI, mengelola pipeline pengolahan data, serta
-                  mengimplementasikan model machine learning untuk mendukung
-                  pengambilan keputusan berbasis data.
-                </p>
-                <p className="font-medium text-primary leading-relaxed">
-                  Peraih 2nd Winner – Skilled Category (Smart and Precision
-                  Farming) pada 6th Agricultural Innovation Technology
-                  Competition (AITeC VI) 2024 melalui pengembangan Smart
-                  Planting System.
-                </p>
-              </div>
+              <p className="text-foreground/70 leading-relaxed mb-4">
+                Mahasiswa semester 6 D4 Teknologi Rekayasa Internet dengan fokus
+                pada pengembangan sistem berbasis AI, backend engineering, dan
+                integrasi machine learning dalam aplikasi web serta IoT.
+                Berpengalaman membangun REST API menggunakan Python dan FastAPI,
+                mengelola pipeline pengolahan data, serta mengimplementasikan
+                model machine learning untuk mendukung pengambilan keputusan
+                berbasis data.
+              </p>
+              <p className="text-foreground/70 leading-relaxed">
+                Peraih 2nd Winner – Skilled Category, sub-category Smart and
+                Precision Farming pada 6th Agricultural Innovation Technology
+                Competition (AITeC VI) 2024 melalui pengembangan Smart Planting
+                System, solusi pertanian cerdas berbasis AI dan IoT. Memiliki
+                kemampuan analitis yang kuat, terbiasa bekerja dalam tim, serta
+                mampu merancang solusi teknis yang terstruktur dan scalable.
+              </p>
             </motion.div>
 
             {/* Education */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">
-                Education
-              </h3>
-              <div className="space-y-6">
+              <h3 className="text-2xl font-bold mb-4">Education</h3>
+              <div className="space-y-4">
                 {educationItems.map((item, index) => (
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="p-6 bg-card rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-all duration-300"
+                    className="bg-background/50 p-4 rounded-lg border border-border"
                   >
-                    <h4 className="font-bold text-lg text-primary mb-1.5">
-                      {item.degree}
-                    </h4>
-                    <p className="text-foreground/80 mb-1">
-                      {item.institution}
-                    </p>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      {item.year}
-                    </p>
-                    <p className="text-sm font-medium text-foreground/90">
+                    <p className="font-semibold text-primary">{item.degree}</p>
+                    <p className="text-foreground/70">{item.institution}</p>
+                    <p className="text-sm text-foreground/50">{item.year}</p>
+                    <p className="text-sm text-foreground/60 mt-2">
                       {item.gpa}
                     </p>
                     {item.achievement && (
-                      <p className="mt-3 text-sm text-accent font-medium leading-relaxed">
+                      <p className="text-sm text-accent font-semibold mt-1">
                         {item.achievement}
                       </p>
                     )}
@@ -156,33 +134,35 @@ export function About() {
             </motion.div>
           </motion.div>
 
-          {/* Kolom Kanan */}
+          {/* Right Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="space-y-12"
+            className="space-y-8"
           >
-            {/* Area of Focus */}
+            {/* Focus Areas */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">
-                Area of Focus
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {focusAreas.map((area, index) => (
+              <h3 className="text-2xl font-bold mb-4">Area of Focus</h3>
+              <div className="space-y-3">
+                {[
+                  "Mobile Application Development (Flutter & Dart)",
+                  "Applied Machine Learning & AI Integration",
+                  "Backend API Development (RESTful Architecture)",
+                  "IoT System Integration & Real-Time Data Processing",
+                  "Database Design, Schema Modeling & Query Optimization (PostgreSQL, MySQL, InfluxDB)",
+                ].map((item, index) => (
                   <motion.div
                     key={index}
+                    className="flex items-center gap-3"
                     variants={itemVariants}
-                    className="flex items-start gap-3 p-4 bg-primary/5 rounded-xl border border-primary/20 hover:bg-primary/10 transition-colors duration-300"
                   >
                     <CheckCircle2
-                      className="text-primary mt-0.5 flex-shrink-0"
+                      className="text-primary flex-shrink-0"
                       size={20}
                     />
-                    <span className="text-foreground/90 text-sm md:text-base">
-                      {area}
-                    </span>
+                    <span className="text-foreground/80">{item}</span>
                   </motion.div>
                 ))}
               </div>
@@ -190,16 +170,14 @@ export function About() {
 
             {/* Soft Skills */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">
-                Soft Skills
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <h3 className="text-2xl font-bold mb-4">Soft Skills</h3>
+              <div className="grid grid-cols-2 gap-3">
                 {softSkills.map((skill, index) => (
                   <motion.div
                     key={index}
+                    className="bg-primary/10 border border-primary/30 px-4 py-2 rounded-lg text-center font-semibold text-primary hover:bg-primary/20 transition-colors"
                     variants={itemVariants}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="px-5 py-3 bg-primary/10 border border-primary/30 rounded-xl text-center font-medium text-primary hover:bg-primary/20 transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
                   >
                     {skill}
                   </motion.div>
