@@ -161,7 +161,7 @@ export function Skills() {
             <div className="hidden md:block absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
             {/* Marquee Container - Desktop: Auto Scroll | Mobile: Grid */}
-            <div className="hidden md:flex animate-marquee gap-8 px-4 w-max">
+            <div className="hidden md:flex gap-8 px-4 w-full animate-marquee">
               {[
                 { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
                 { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
@@ -174,22 +174,21 @@ export function Skills() {
                 { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
                 { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
               ].map((tool, index) => (
-                <motion.div
+                <div
                   key={index}
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  className="flex flex-col items-center gap-3 px-6 py-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all cursor-pointer flex-shrink-0 min-w-[120px]"
+                  className="group flex flex-col items-center gap-3 px-6 py-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all flex-shrink-0 min-w-[120px]"
                 >
                   <Image
                     src={tool.icon}
                     alt={tool.name}
                     width={48}
                     height={48}
-                    className="object-contain"
+                    className="object-contain group-hover:scale-110 transition-transform"
                   />
                   <span className="text-sm font-medium text-foreground/70 text-center">
                     {tool.name}
                   </span>
-                </motion.div>
+                </div>
               ))}
               
               {/* Duplicate for seamless loop */}
@@ -205,22 +204,21 @@ export function Skills() {
                 { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
                 { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
               ].map((tool, index) => (
-                <motion.div
+                <div
                   key={`dup-${index}`}
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  className="flex flex-col items-center gap-3 px-6 py-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all cursor-pointer flex-shrink-0 min-w-[120px]"
+                  className="group flex flex-col items-center gap-3 px-6 py-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all flex-shrink-0 min-w-[120px]"
                 >
                   <Image
                     src={tool.icon}
                     alt={tool.name}
                     width={48}
                     height={48}
-                    className="object-contain"
+                    className="object-contain group-hover:scale-110 transition-transform"
                   />
                   <span className="text-sm font-medium text-foreground/70 text-center">
                     {tool.name}
                   </span>
-                </motion.div>
+                </div>
               ))}
             </div>
 
