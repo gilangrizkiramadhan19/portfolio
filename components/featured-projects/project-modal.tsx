@@ -100,47 +100,90 @@ export function ProjectModal({
             {/* Screens Carousel */}
             {screens.length > 0 && currentScreen && (
               <div className="p-8 md:p-10">
-                <h3 className="text-lg font-semibold text-primary mb-4">
-                  App Features ({currentScreenIndex + 1} of {screens.length})
+                <h3 className="text-lg font-semibold text-primary mb-6">
+                  {project.category === "mobile" ? "App Screenshots" : "Features"} ({currentScreenIndex + 1} of {screens.length})
                 </h3>
 
-                <div className="grid md:grid-cols-2 gap-12 mb-10">
-                  {/* Mockup Image */}
-                  <motion.div
-                    key={currentScreenIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-center justify-center md:order-1"
-                  >
-                    <div className="relative w-48 h-72 md:w-72 md:h-[540px] overflow-hidden rounded-lg bg-muted flex-shrink-0">
-                      <Image
-                        src={`${basePath}${currentScreen.image}`}
-                        alt={currentScreen.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </motion.div>
+                {/* Mobile Category Layout - Side by Side */}
+                {project.category === "mobile" && (
+                  <div className="grid md:grid-cols-2 gap-12 mb-10">
+                    {/* Phone Mockup - Left */}
+                    <motion.div
+                      key={currentScreenIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center justify-center"
+                    >
+                      <div className="relative w-56 h-96 sm:w-64 sm:h-[448px] md:w-72 md:h-[512px] overflow-hidden rounded-3xl bg-muted border-8 border-black shadow-2xl flex-shrink-0">
+                        <Image
+                          src={`${basePath}${currentScreen.image}`}
+                          alt={currentScreen.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </motion.div>
 
-                  {/* Screen Description */}
-                  <motion.div
-                    key={`desc-${currentScreenIndex}`}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex flex-col justify-center md:order-2"
-                  >
-                    <h4 className="text-xl md:text-2xl font-bold text-primary mb-4">
-                      {currentScreen.title}
-                    </h4>
-                    <p className="text-foreground/70 leading-relaxed text-sm md:text-base">
-                      {currentScreen.description}
-                    </p>
-                  </motion.div>
-                </div>
+                    {/* Description - Right */}
+                    <motion.div
+                      key={`desc-${currentScreenIndex}`}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex flex-col justify-center"
+                    >
+                      <h4 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                        {currentScreen.title}
+                      </h4>
+                      <p className="text-foreground/70 leading-relaxed text-base md:text-lg">
+                        {currentScreen.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                )}
+
+                {/* Web & Other Category Layout - Full Width */}
+                {(project.category === "web" || project.category === "design" || project.category === "other") && (
+                  <div className="mb-10">
+                    {/* Large Web Screenshot */}
+                    <motion.div
+                      key={currentScreenIndex}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="mb-8 w-full"
+                    >
+                      <div className="relative w-full max-w-5xl mx-auto aspect-video overflow-hidden rounded-xl bg-muted border border-border shadow-lg">
+                        <Image
+                          src={`${basePath}${currentScreen.image}`}
+                          alt={currentScreen.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </motion.div>
+
+                    {/* Description Below */}
+                    <motion.div
+                      key={`desc-${currentScreenIndex}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <h4 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                        {currentScreen.title}
+                      </h4>
+                      <p className="text-foreground/70 leading-relaxed text-base md:text-lg max-w-3xl">
+                        {currentScreen.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                )}
 
                 {/* Navigation */}
                 <div className="flex items-center justify-between gap-4 pt-6 border-t border-border">
