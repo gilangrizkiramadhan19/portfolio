@@ -55,9 +55,9 @@ export function ProjectModal({
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
       >
-        <div className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-screen overflow-y-auto">
+        <div className="bg-background border border-border rounded-2xl max-w-7xl w-full max-h-[90vh] overflow-y-auto">
           <div className="relative">
             {/* Close Button */}
             <button
@@ -68,16 +68,16 @@ export function ProjectModal({
             </button>
 
             {/* Header */}
-            <div className="border-b border-border p-8 pb-6">
-              <h2 className="text-3xl font-bold text-primary mb-2">
+            <div className="border-b border-border p-8 md:p-10 pb-8 md:pb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-3">
                 {project.title}
               </h2>
-              <p className="text-foreground/80 font-semibold mb-6">
+              <p className="text-lg md:text-xl text-foreground/80 font-semibold mb-8">
                 {project.description}
               </p>
 
               {/* Problem & Solution */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-sm font-semibold text-primary mb-2">
                     PROBLEM
@@ -99,12 +99,12 @@ export function ProjectModal({
 
             {/* Screens Carousel */}
             {screens.length > 0 && currentScreen && (
-              <div className="p-8">
+              <div className="p-8 md:p-10">
                 <h3 className="text-lg font-semibold text-primary mb-4">
                   App Features ({currentScreenIndex + 1} of {screens.length})
                 </h3>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="grid md:grid-cols-2 gap-12 mb-10">
                   {/* Mockup Image */}
                   <motion.div
                     key={currentScreenIndex}
@@ -114,7 +114,7 @@ export function ProjectModal({
                     transition={{ duration: 0.3 }}
                     className="flex items-center justify-center md:order-1"
                   >
-                    <div className="relative w-48 h-72 md:w-56 md:h-96 overflow-hidden rounded-lg bg-muted flex-shrink-0">
+                    <div className="relative w-48 h-72 md:w-72 md:h-[540px] overflow-hidden rounded-lg bg-muted flex-shrink-0">
                       <Image
                         src={`${basePath}${currentScreen.image}`}
                         alt={currentScreen.title}
