@@ -153,15 +153,15 @@ export function Skills() {
           </div>
 
           {/* Logo Marquee - Desktop Scrolling, Mobile Grid */}
-          <div className="relative overflow-hidden bg-card border border-border rounded-2xl py-8 md:py-8 md:overflow-x-auto">
+          <div className="relative overflow-hidden bg-card border border-border rounded-2xl py-8">
             {/* Gradient Overlay Left - Only on Desktop */}
-            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
             
             {/* Gradient Overlay Right - Only on Desktop */}
-            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
-            {/* Marquee Container - Desktop: Scrolling | Mobile: Grid */}
-            <div className="hidden md:flex md:animate-marquee gap-8 px-4">
+            {/* Marquee Container - Desktop: Auto Scroll | Mobile: Grid */}
+            <div className="hidden md:flex animate-marquee gap-8 px-4 w-max">
               {[
                 { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
                 { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
