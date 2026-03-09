@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -75,8 +75,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -128,16 +128,31 @@
 }
 
 @layer utilities {
+  /* Marquee Animation Fix untuk mobile & desktop */
   @keyframes marquee {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-100% / 2));
+      transform: translateX(-50%);
     }
   }
 
   .animate-marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 50s linear infinite; /* 50s biar lambat & lengkap di HP */
+    will-change: transform; /* GPU acceleration, smooth di mobile */
+    display: flex;
+  }
+
+  /* Optional: pause saat hover (UX lebih baik) */
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Optional: versi lebih lambat untuk mobile kecil */
+  @media (max-width: 640px) {
+    .animate-marquee {
+      animation-duration: 20s; /* lebih lambat di HP biar semua tool kelihatan */
+    }
   }
 }
