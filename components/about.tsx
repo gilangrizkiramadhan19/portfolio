@@ -64,7 +64,7 @@ export function About() {
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
           </div>
           <motion.a
-            href="/cv-gilang-rizki-ramadhan.pdf"
+            href="/CV Gilang Rizki Ramadhan.pdf"
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
